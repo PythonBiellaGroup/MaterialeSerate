@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Python Biella Group Courses</title>
+  </head>
+  <body>
+    {% if log_ok == 'no' %}
+    <p>Variable login error</p>
+    {% elif log_ok %}
+    <p>Welcome, you are logged in!</p>
+    {% else %}
+    <p>Your are not logged in!</p>
+    {% endif %}
+    <br />
+    <h1>The course has name: {{puppy_name}}</h1>
+    <h2>List of the courses: {{course_list}}</h2>
+    <ul>
+      {% for course in courses_iter_list %}
+      <li>{{ course }}</li>
+      {% endfor %}
+    </ul>
+    <p>
+      {% if 'flask' in courses_iter_list %} You can do the Flask course! {% else
+      %} Flask is not in the available courses! {% endif %}
+    </p>
+  </body>
+</html>

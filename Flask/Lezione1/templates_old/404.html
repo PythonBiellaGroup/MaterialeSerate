@@ -1,0 +1,10 @@
+{% extends 'base.html' %} {% block content %}
+<div class="jumbotron">
+  <h1 class="display-3">
+    Mi dispiace, ma la pagina che stai cercando non esiste
+  </h1>
+  <p class="lead">Per fare altro schiaccia qui:</p>
+  <hr class="my-2" />
+  <a href="{{url_for('index')}}">Vai alla Home Page</a>
+</div>
+{% endblock content %}

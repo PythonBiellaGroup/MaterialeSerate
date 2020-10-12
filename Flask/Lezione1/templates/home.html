@@ -1,0 +1,14 @@
+{% extends 'base.html' %} {% block content%}
+
+<div class="jumbotron">
+  <h1 class="display-3">Welcome to Python Biella Group Website</h1>
+  <p class="lead">Sito di studio su Flask con Python</p>
+  <hr class="my-2" />
+  <p>Studiamo assieme come usare Flask e i Templates</p>
+  <p class="lead">
+    <a href="{{url_for('course_list')}}">Vuoi vedere l'elenco dei corsi?</a>
+  </p>
+</div>
+<br />
+<img src="../static/apollo.jpg" alt="apollo_control_room_image" />
+{% endblock content%}

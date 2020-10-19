@@ -96,11 +96,19 @@
         </form>
       </div>
     </nav>
-    <h1>Questo bellissimo corso su Flask</h1>
-    <br />
-    <h2>È un corso fantastico</h2>
-    <br />
-    <h3>Mi sto divertendo tantissimo</h3>
+    <div class="jumbotron">
+      <h1 class="display-4">Corso Flask!</h1>
+      <p class="lead">Benvenuti nel portale di <b>PythonBiellaGroup</b></p>
+      <hr class="my-4" />
+      <p>Potete fare un sacco di bellissime cose!!!</p>
+      <a
+        class="btn btn-primary btn-lg"
+        href="{{url_for('index')}}"
+        role="button"
+        >Fai cose</a
+      >
+    </div>
+
     {% block content %} {% endblock content %}
   </body>
 </html>

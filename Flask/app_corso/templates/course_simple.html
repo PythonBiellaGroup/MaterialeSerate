@@ -1,0 +1,21 @@
+{% extends 'index.html' %} {% block content %}
+<br />
+<h1>NUOVO CORSO</h1>
+<form action="" method="POST">
+  {{course_simple_form.hidden_tag()}}
+  {{course_simple_form.name.label}}{{course_simple_form.name()}}
+  <br />
+  {{course_simple_form.teacher.label}}{{course_simple_form.teacher()}}
+  <br />
+  {{course_simple_form.active.label}}{{course_simple_form.active()}}
+  <br />
+  {{course_simple_form.difficulty.label}}{{course_simple_form.difficulty()}}
+  <br />
+  {{course_simple_form.platform.label}}{{course_simple_form.platform()}}
+  <br />
+  {{course_simple_form.feedback.label}}{{course_simple_form.feedback()}}
+  <br />
+  {{course_simple_form.submit()}}
+</form>
+
+{% endblock content %}

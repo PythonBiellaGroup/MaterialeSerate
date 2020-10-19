@@ -1,0 +1,16 @@
+{% extends 'index.html' %} {% block content %}
+<form action="{{url_for('new_course')}}">
+  <label for="coursename">Name of the course:</label>
+  <input type="text" name="course-name" />
+  <label for="subjectname">Course subject:</label>
+  <input type="text" name="course-subject" />
+  <input type="submit" value="Submit Form" />
+</form>
+
+<br />
+<ul>
+  <li>Course name: <b>{{course_name}}</b></li>
+  <li>Course subject: <b>{{course_subject}}</b></li>
+</ul>
+
+{% endblock content %}

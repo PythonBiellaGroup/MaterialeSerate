@@ -1,0 +1,8 @@
+flask
+flask_wtf
+wtforms
+flask-sqlalchemy
+flask-migrate
+flask-restful
+flask-jwt
+bandit

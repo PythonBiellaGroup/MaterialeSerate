@@ -1,0 +1,22 @@
+{% extends 'index.html' %} {% block content %} {% if nome_corso == 'flask'%}
+<h2>Questo è il corso di {{nome_corso}}</h2>
+<br />
+<p>Elenco delle lezioni:</p>
+<ul>
+  <li>Lezione 1: Introduzione</li>
+  <li>Lezione 2: Jinja avanzato</li>
+  <li>Lezione 3: ...</li>
+</ul>
+<br />
+<a href="{{url_for('esempio')}}">Clicca qui per andare sulla pagina di Flask</a>
+{%elif nome_corso == 'lista'%}
+<h2>Lista dei corsi</h2>
+<ul>
+  {% for corso in pagina_lista_corsi %}
+  <li>{{corso}}</li>
+  {%endfor%}
+</ul>
+<img src="../static/apollo.jpg" alt="apollo control room" />
+{%else%}
+<h2>Attenzione: Questo non è il corso giusto!</h2>
+{%endif%} {% endblock content %}

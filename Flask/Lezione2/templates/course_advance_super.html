@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block content %}
+<div class="jumbotron">
+  <h1 class="display-3">Welcome to Python Biella Group New Course Form!</h1>
+  <p class="lead">
+    Please fill the form below to create a new course for the community
+  </p>
+  <hr class="my-2" />
+  <form action="" method="post">
+    {{ form.hidden_tag() }} {{ form.course_name.label }}{{ form.course_name }}
+    <br />
+    {{ form.course_active.label }}{{ form.course_active }}
+    <br />
+    {{ form.difficulty.label }}{{ form.difficulty }}
+    <br />
+    {{ form.platform.label }}{{ form.platform }}
+    <br />
+    Any other note or informations?
+    <br />
+    {{ form.note}}
+    <br />
+    {{ form.submit() }}
+  </form>
+</div>
+{% endblock content %}

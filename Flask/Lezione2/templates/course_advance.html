@@ -1,0 +1,19 @@
+{% extends 'base.html' %} {% block content %}
+<br />
+<p>
+  <!-- The first time you go to else because the variable is set to false in python-->
+  <!-- Then when you compile the form you can see there the informations-->
+  {% if course_name %} The course name you have entered is:
+  <b>{{course_name}}</b>
+  <br />
+  Update it in the form below if you wanna change! {% else %}
+  <br />
+  Please enter course name: {% endif %}
+</p>
+<br />
+<form action="" method="POST">
+  <!-- Use the advance form (form) object here -->
+  {{ advance_form.hidden_tag() }} {{ advance_form.name.label }}
+  {{advance_form.name() }} {{ advance_form.submit() }}
+</form>
+{% endblock content %}

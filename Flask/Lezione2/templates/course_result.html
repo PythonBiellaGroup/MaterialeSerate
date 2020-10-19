@@ -1,0 +1,26 @@
+{% extends 'base.html' %} {% block content %} {% for message in
+get_flashed_messages() %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    <span class="sr-only">Close</span>
+  </button>
+  {{ message }}
+</div>
+{% endfor %}
+
+<div class="jumbotron">
+  <h1 class="display-3">New course created!</h1>
+  <p class="lead">The information you inserted are:</p>
+  <hr class="my-2" />
+  <ul>
+    <li>Name of the course: <b>{{ session['course_name'] }}</b></li>
+    <li>Course is active: <b>{{ session['course_active'] }}</b></li>
+    <li>Course difficulty: <b>{{ session['difficulty'] }}</b></li>
+    <li>
+      Platform you want to do the course: <b>{{ session['platform'] }}</b>
+    </li>
+    <li>Other note or informations: <b>{{ session['note'] }}</b></li>
+  </ul>
+</div>
+{% endblock content %}

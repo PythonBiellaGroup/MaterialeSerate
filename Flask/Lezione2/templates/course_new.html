@@ -1,0 +1,14 @@
+{% extends 'base.html' %} {% block content %}
+<div class="jumbotron">
+  <h1 class="display-3">Create a new course</h1>
+  <p class="lead">Insert the course informations</p>
+  <hr class="my-2" />
+  <form action="{{url_for('course_created')}}">
+    <label for="first">Name of the course: </label>
+    <input type="text" name="course-name" />
+    <label for="last">Course subject: </label>
+    <input type="text" name="course-subject" />
+    <input type="submit" value="Submit Form" />
+  </form>
+</div>
+{% endblock content %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %} {% block content %}
+<div class="jumbotron">
+  <h1 class="display-3">The new course has been created!</h1>
+  <p class="lead">
+    Info about the new course: 
+    <ul>
+        <li>Course name: <b>{{course_name}}</b></li>
+        <li>Course subject: <b>{{course_subject}}</b></li>
+    </ul> 
+  </p>
+  <hr class="my-2" />
+</div>
+{% endblock content %}

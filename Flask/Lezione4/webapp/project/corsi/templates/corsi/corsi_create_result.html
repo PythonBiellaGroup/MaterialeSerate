@@ -1,0 +1,31 @@
+{% extends "base.html" %} {% block content %}
+
+<div>
+  <div class="container text-center">
+    <br />
+    <h1>Nuovo corso creato</h1>
+    <br />
+    <p>
+      Complimenti! Hai creato con successo un nuovo corso di
+      <b>PythonBiellaGroup</b>
+    </p>
+    <br />
+
+    <!-- Visualize Results# -->
+    <br />
+    <div class="container">
+      <h4>Dettagli del nuovo corso</h4>
+      <br />
+      <p>Informazioni compilate nel form</p>
+    </div>
+    <br />
+    <div class="container">
+      <br />
+      {% for input_item in course_list %}
+      <p>{{ colnames[loop.index-1] }} : {{ input_item }}</p>
+      {% endfor %}
+    </div>
+  </div>
+  <br />
+  {% endblock %}
+</div>

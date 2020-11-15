@@ -9,7 +9,8 @@ Materiale ed elenco delle lezioni.
 
 - Lezione 2: Jinja avanzato e Forms
 - Lezione 3: Flask con Database
-- Lezione 4: Grandi applicazioni con Flask
+- Lezioni 4-5: Review
+- Lezione 6: Grandi applicazioni con Flask
 - Lezione 5: REST Backend e concetti avanzati
 
 

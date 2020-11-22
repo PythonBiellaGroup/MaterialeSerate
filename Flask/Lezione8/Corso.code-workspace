@@ -1,0 +1,10 @@
+{
+    "folders": [
+        {
+            "path": ".."
+        }
+    ],
+    "settings": {
+        "python.pythonPath": "C:\\Anaconda3\\envs\\django\\python.exe"
+    }
+}

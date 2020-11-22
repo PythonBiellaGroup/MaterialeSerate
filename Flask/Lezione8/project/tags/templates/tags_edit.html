@@ -1,0 +1,52 @@
+{% extends "base.html" %} {% block content %}
+
+    <!-- Messaggi flash -->        
+    <div class="container">
+        {# Flashed messages #}
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category }}" role="alert">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        {# End Flashed messages #}
+    </div>        
+
+    <!-- Gestione Edit -->
+    <div class="container text-center">
+      <br>
+      <h1>Modifica tag {{ tag.name }}</h1>
+      <br>
+    </div>
+
+    <div class="container">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-md-4">
+                <form class="form" method="POST" role="form">
+                    {# This hidden_tag is a CSRF security feature. #}
+                    {{ form.hidden_tag() }}
+                    {#String forms#}
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="name" name="name"
+                               placeholder="Nuovo nome del tag" required>
+                    </div>
+                    {#Submit button#}
+                    <div class="row align-items-center justify-content-center">
+                        <button type="submit" class="btn btn-success">Aggiorna</button>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+  <!-- Link di navigazione -->
+  <div class="container text-center">
+    <div class="link-list-wrapper">
+      <ul class="link-list">
+        <li><a class="list-item" href="{{ url_for('tags.tags') }}"><span>Lista tags</span></a></li>
+        <li><a class="list-item" href="{{ url_for('corsi.lista') }}"><span>Lista corsi</span></a></li>
+      </ul>
+    </div>
+  </div>    
+
+{% endblock %}

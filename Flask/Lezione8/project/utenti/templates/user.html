@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+
+<!-- Messaggi flash -->
+<div class="container">
+  {# Flashed messages #}
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }}" role="alert">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  {# End Flashed messages #}
+</div>
+
+
+<div class="container">
+  <div class="row align-items-center justify-content-center">
+
+<div class="page-header">
+  <img class="img-rounded profile-thumbnail" src="{{ user.gravatar(size=256) }}">
+  <div class="profile-header">
+      <h1>{{ user.username }}</h1>
+      {% if user.name or user.location %}
+      <p>
+          {% if user.name %}{{ user.name }}<br>{% endif %}
+          {% if user.location %}
+              from <a href="http://maps.google.com/?q={{ user.location }}">{{ user.location }}</a><br>
+          {% endif %}
+      </p>
+      {% endif %}
+      {% if current_user.is_administrator() %}
+      <p><a href="mailto:{{ user.email }}">{{ user.email }}</a></p>
+      {% endif %}
+      {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
+      <p>Iscritto da: {{ moment(user.member_since).format('L') }}. Ultima visita: {{ moment(user.last_seen).fromNow() }}.</p>
+      <p>
+          {% if user == current_user %}
+          <a class="btn btn-success" href="{{ url_for('utenti.edit_profile') }}">Aggiorna profilo</a>
+          {% endif %}
+          {% if current_user.is_administrator() %}
+          <a class="btn btn-danger" href="{{ url_for('utenti.edit_profile_admin', id=user.id) }}">Aggiorna profilo [Admin]</a>
+          {% endif %}
+      </p>
+  </div>
+</div>
+
+</div>
+</div>
+{% endblock %}

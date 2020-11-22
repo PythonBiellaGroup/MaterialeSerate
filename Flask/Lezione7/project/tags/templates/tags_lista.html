@@ -1,0 +1,69 @@
+{% extends "base.html" %} {% block content %}
+
+    <!-- Messaggi flash -->
+    <div class="container">
+      {# Flashed messages #}
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }}" role="alert">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+      {# End Flashed messages #}
+  </div>        
+
+
+<div class="container text-center">
+    <br>
+    <h1>Lista tags</h1>
+    <br>
+</div>
+
+    <!-- Lista tags -->    
+    <h1 class="display-1">
+      {% for t in lista_tags %}
+      <div>
+      <span class="badge badge-secondary">{{t.name}}</span>
+      <!-- Edit e cancellazione tag ammessi solo al profilo amministratore -->
+      {% if current_user.is_administrator() %}
+      <a class="btn btn-primary pull-right" href="{{ url_for('tags.edit_tag', id=t.id) }}">Edit</a>
+      <a class="btn btn-danger pull-right" href="{{ url_for('tags.tag_delete', id=t.id) }}">Cancella</a>
+      {% endif %}
+      </div>
+      {% endfor %}
+    </h1>
+
+    {% if current_user.is_administrator() %}
+    <!-- Form per la creazione di nuovi tag -->        
+        <div class="container text-center">
+          <br>
+          <h1>Nuovo tag</h1>
+          <br>
+        </div>
+
+        {% block body %}
+        <div class="container">
+          <div class="row align-items-center justify-content-center">
+            <div class="col-md-4">
+                  <form class="form" method="POST" role="form">
+                      {# This hidden_tag is a CSRF security feature. #}
+                      {{ form.hidden_tag() }}
+                      {#String forms#}
+                      <div class="form-group">
+                          <input type="text" class="form-control" id="name" name="name"
+                                 placeholder="Nome del tag" required>
+                      </div>
+                      {#Submit button#}
+                      <div class="row align-items-center justify-content-center">
+                        <button type="submit" class="btn btn-success">Crea nuovo tag</button>
+                      </div>
+                  </form>
+            </div>
+          </div>
+        </div>
+        {% endblock %}
+    {% endif %}
+
+    {% endblock %}
+

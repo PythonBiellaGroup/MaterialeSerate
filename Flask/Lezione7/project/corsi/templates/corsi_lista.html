@@ -1,0 +1,59 @@
+{% extends "base.html" %} 
+{% block content %}
+
+    <!-- Messaggi flash -->        
+    <div class="container">
+      {# Flashed messages #}
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }}" role="alert">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+      {# End Flashed messages #}
+    </div>        
+
+
+<div class="container text-center">
+    <br>
+    <h1>Lista corsi</h1>
+    <br>
+</div>
+
+<!--Lista corsi in formato CARD -->
+<div class="container align-center">
+<div class="row">
+    {% for c in lista_corsi %}
+    <div class="col-12 col-lg-8">
+      <div class="card-wrapper">
+      
+      <div class="card card-bg">
+        <div class="card-body">
+          <div class="head-tags">
+            <!-- Lista tags -->
+            {% for t in c.tags %}
+            <a class="card-tag" href="/tags/{{ t.id }}">
+                  {{t.name}}
+            </a>
+            {% endfor %}              
+            <span class="data">{{ c.livello }}</span>
+          </div>
+          <h5 class="card-title">{{ c.nome }}</h5>
+          <p class="card-text">{{ c.descrizione }}</p>
+          <div class="it-card-footer">
+            <span class="card-signature">di {{c.insegnante}}</span>
+            <a href="/corsi/{{ c.id }}"><button class="btn btn-outline-primary btn-sm" >Dettagli</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br>
+   {% endfor %}
+</div>
+</div>
+
+
+{% endblock %}

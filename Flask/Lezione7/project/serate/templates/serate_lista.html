@@ -1,0 +1,73 @@
+{% extends "base.html" %} 
+{% block content %}
+
+    <!-- Messaggi flash -->        
+    <div class="container">
+      {# Flashed messages #}
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }}" role="alert">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+      {# End Flashed messages #}
+    </div>        
+
+
+<div class="container text-center">
+    <br>
+    <h1>Lista Serate</h1>
+    <br>
+</div>
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Data</th>
+        <th scope="col">Nome - Descrizione</th>
+        <th scope="col">Links partecipazione</th>
+        <th scope="col">Links registrazione</th>
+        <th scope="col">Corso</th>
+        <th scope="col">Azioni</th>
+      </tr>
+    </thead>
+      <tbody>
+    {% for s,c in zipped_data %}
+
+      <tr>
+        <th scope="row">{{ s.data.strftime('%d/%m/%Y %H:%M') }}</th>
+        <td>{{ s.nome }} - {{ s.descrizione }}</td>
+        <td>
+            {% if s.link_partecipazione %}
+              <a href="{{ s.link_partecipazione }}">{{ s.link_partecipazione }}</a>
+            {% else %}
+              Non disponibile
+            {% endif %}
+        </td>
+        <td>
+          {% if s.link_registrazione %}
+            <a href="{{ s.link_registrazione }}">{{ s.link_registrazione }}</a>
+          {% else %}
+            Non disponibile
+          {% endif %}
+        </td>
+        <!--Corso-->
+        <td>
+          {% if c %}
+          <a href="/corsi/{{ c.id }}"><button class="btn btn-outline-primary btn-sm" >{{ c.nome }}</button></a>         
+          {% else %}
+           Serata non collegata a corso
+          {% endif %}
+        </td>
+        <!--Azioni-->
+        <td>
+          <a class="btn btn-primary pull-right" href="#">Edit</a>
+          <a class="btn btn-danger pull-right" href="{{ url_for('serate.serata_delete', id=s.id) }}">Cancella</a>   
+        </td>
+      </tr>
+      {% endfor -%}
+    </tbody>
+  </table>
+
+  {% endblock %}

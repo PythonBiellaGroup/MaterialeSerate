@@ -1,0 +1,26 @@
+{% extends "base.html" %} {% block content %}
+
+<!-- Messaggi flash -->
+<div class="container">
+  {# Flashed messages #}
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }}" role="alert">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  {# End Flashed messages #}
+</div>
+
+<div class="container">
+  <div class="row align-items-center justify-content-center">
+    <div class="col-md-10">
+      <div class="row align-items-center justify-content-center">
+        <h1>Sito del Python Biella Group</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<img src="../static/pgb_logo.jpg" alt="Python Biella Group" class="rounded mx-auto d-block">
+{% endblock %}

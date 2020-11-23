@@ -66,7 +66,7 @@ class Corso(db.Model):
     def insert_test_corsi():
 
         corsi = [ 
-            ( "Flask", "Andrea Guzzo", "Intermedio", "Corso in cinque serate del microframework Flask", "flask-icon.png" ),
+            ( "Flask", "Andrea Guzzo e Mario Nardi", "Intermedio", "Corso sul microframework Flask", "flask-icon.png" ),
             ( "Pygame", "Mario Nardi", "Principiante", "Introduzione a Pygame", "pygame-icon.png" ),
             ( "Pandas", "Maria Teresa Panunzio", "Intermedio", "Corso base per manipolare i dataframes" )
         ]

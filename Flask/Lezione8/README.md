@@ -1,5 +1,16 @@
 # Devlog
 
+# 6a settimana
+
+Autenticazione
+- login
+- logout
+- registrazione
+- password dimenticata
+- conferma registrazione
+
+Autorizzazioni alle operazioni
+
 # 5a settimana
 
 10/11/2020
@@ -61,11 +72,9 @@
 - Sistemata cartella static dai Blueprint
 
 # TO DO App
-- Pagina dettaglio serata : edit  serata
+- Pagina dettaglio serata : edit serata
 - Immagine statica corso
-- Finestre modali (https://italia.github.io/bootstrap-italia/docs/componenti/modale/#demo)
-
-# TO DO Modello
+- Finestre modali, per ora applicate solo a Tag
 
 # Corso Flask
 ## Progetto di esempio
@@ -92,8 +101,8 @@ Elenco di cose da trattare durante il corso:
 7. Agganciare i corsi al DB
 8. Costruire funzionalità di visualizzazione di tutti i corsi esistenti all'interno del database
 9. Costruire funzionalità delle serate
-(fino qui)
 10. Maschera di Login con funzionalità di Login e permessi di visualizzazione
+(fino qui)
 11. Pagina di Blog
 12. Finalizzazione e test sulla pagina
 13. Gestione della sicurezza
@@ -128,7 +137,6 @@ flask db upgrade #update the database with the migration
 - Pipeline di deploy CI/CD con GitHub
 - Test browser con Selenium
 - Test browser con Behave
-
 
 Link e materiale utile
 - Tema Bootstrap Italia: https://italia.github.io/bootstrap-italia/

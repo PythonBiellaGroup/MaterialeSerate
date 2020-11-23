@@ -27,51 +27,12 @@
       <span class="badge badge-secondary">{{t.name}}</span>
       <!-- Edit e cancellazione tag ammessi solo al profilo amministratore -->
       {% if current_user.is_administrator() %}
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confermaModifica{{t.id}}">Modifica</button>
-      <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#confermaCancellazione{{t.id}}">Cancella</button>
-      <!-- Modal Modifica -->
-      <div class="it-example-modal">
-        <div class="modal" tabindex="-1" role="dialog" id="confermaModifica{{t.id}}">
-          <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Conferma operazione</h5>
-                </div>
-                <div class="modal-body">
-                  <p>Vuoi procedere con la modifica ?</p>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-outline-primary btn-sm" type="button" data-dismiss="modal">Ritorna</button>
-                    <a class="btn btn-primary btn-sm" href="{{ url_for('tags.edit_tag', id=t.id) }}" role="button">Conferma</a>
-                </div>
-              </div>
-          </div>
-        </div>
-      </div>      
-      <!-- Modal Cancellazione -->
-      <div class="it-example-modal">
-        <div class="modal" tabindex="-1" role="dialog" id="confermaCancellazione{{t.id}}">
-          <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Conferma operazione</h5>
-                </div>
-                <div class="modal-body">
-                  <p>Vuoi procedere con la cancellazione ?</p>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-outline-primary btn-sm" type="button" data-dismiss="modal">Ritorna</button>
-                    <a class="btn btn-danger btn-sm" href="{{ url_for('tags.tag_delete', id=t.id) }}" role="button">Conferma</a>
-                </div>
-              </div>
-          </div>
-        </div>
-      </div>      
+      <a class="btn btn-primary pull-right" href="{{ url_for('tags.edit_tag', id=t.id) }}">Edit</a>
+      <a class="btn btn-danger pull-right" href="{{ url_for('tags.tag_delete', id=t.id) }}">Cancella</a>
       {% endif %}
       </div>
       {% endfor %}
     </h1>
-
 
     {% if current_user.is_administrator() %}
     <!-- Form per la creazione di nuovi tag -->        

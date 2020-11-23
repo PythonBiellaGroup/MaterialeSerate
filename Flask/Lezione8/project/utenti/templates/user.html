@@ -35,7 +35,7 @@
       <p><a href="mailto:{{ user.email }}">{{ user.email }}</a></p>
       {% endif %}
       {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
-      <p>Iscritto da: {{ moment(user.member_since).format('L') }}. Ultima visita: {{ moment(user.last_seen).fromNow() }}.</p>
+      <p>Iscritto dal: {{ moment(user.member_since).format('L') }}. Ultima visita: {{ moment(user.last_seen).fromNow() }}.</p>
       <p>
           {% if user == current_user %}
           <a class="btn btn-success" href="{{ url_for('utenti.edit_profile') }}">Aggiorna profilo</a>

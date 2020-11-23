@@ -95,6 +95,7 @@ class EditProfileAdminForm(FlaskForm):
         Regexp('^[A-Za-z][A-Za-z0-9_.]*$', 0,
                'Nome utente deve essere composto solo da lettere, numeri, punti o underscores')])
     confirmed = BooleanField('Confermato')
+    # coerce => il valore della form è forzato a int
     role = SelectField('Ruolo', coerce=int)
     name = StringField('Nome vero', validators=[Length(0, 64)])
     location = StringField('Dove vivi', validators=[Length(0, 64)])
@@ -103,6 +104,16 @@ class EditProfileAdminForm(FlaskForm):
 
     def __init__(self, user, *args, **kwargs):
         super(EditProfileAdminForm, self).__init__(*args, **kwargs)
+        '''
+        SelectFields  must be given as a list of tuples with two values: 
+        an identifier for the item and the text to show in the control as a string. 
+        
+        The choices list is set in the form’s constructor, 
+        with values obtained from the Ruolo model with a query that sorts all the roles alphabetically by name. 
+        The identifier for each tuple is set to the id of each role, and since these are integers, 
+        a coerce=int argument is added to the SelectField constructor so that the field values are stored as integers instead of the default, 
+        which is strings.
+        '''
         self.role.choices = [(role.id, role.name)
                              for role in Ruolo.query.order_by(Ruolo.name).all()]
         self.user = user

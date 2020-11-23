@@ -65,7 +65,7 @@
         {% if current_user.is_administrator() %}
         <!--Azioni-->
         <td>
-          <a class="btn btn-primary pull-right" href="#">Edit</a>
+          <a class="btn btn-primary pull-right" href="{{ url_for('serate.edit_serata', id=s.id) }}">Edit</a>
           <a class="btn btn-danger pull-right" href="{{ url_for('serate.serata_delete', id=s.id) }}">Cancella</a>   
         </td>
         {% endif %}

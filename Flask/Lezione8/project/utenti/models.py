@@ -64,7 +64,7 @@ class Utente(UserMixin, db.Model):
     def insert_test_users():
         # Il ruolo degli utenti è quello di default
         utenti = [ 
-            ("test1@test.it", "mariateresa", "pwd1" ),
+            ("test1@test.it", "maurici", "pwd1" ),
             ("test2@test.it", "davcom", "pwd2" ),
         ]
         for ut in utenti:

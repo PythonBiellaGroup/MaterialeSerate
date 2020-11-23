@@ -43,3 +43,4 @@ class SerataForm(FlaskForm):
         u"Link della registrazione dell'incontro",
         validators=[Length(min=-1, max=255, message='Massimo 255 caratteri')]
     )
+    submit = SubmitField('Conferma')

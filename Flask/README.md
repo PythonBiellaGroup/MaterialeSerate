@@ -6,14 +6,11 @@ Materiale ed elenco delle lezioni.
 ## Lezioni
 
 - Lezione 1: Introduzione a Flask e Jinja2 base
-
 - Lezione 2: Jinja avanzato e Forms
 - Lezione 3: Flask con Database
 - Lezioni 4-5: Review
 - Lezione 6: Grandi applicazioni con Flask
-- Lezione 5: REST Backend e concetti avanzati
-
-
+- Lezione 7: Autenticazione e permessi
 
 ## Setup
 

@@ -29,6 +29,9 @@ class Config(object):
     PBG_MAIL_SENDER = 'Python Biella Group Admin <pbg@pbg.com>'
     # Definizione email dell'utente ADMIN iniziale
     PBG_ADMIN = os.environ.get('PBG_ADMIN')
+    # Per la paginazione
+    PBG_COMMENTS_PER_PAGE = 5
+    PBG_POSTS_PER_PAGE = 5
 
     @staticmethod
     def init_app(app):

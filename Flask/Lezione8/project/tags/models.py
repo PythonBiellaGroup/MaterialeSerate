@@ -1,4 +1,5 @@
 from project import db
+from sqlalchemy import desc,asc
 
 class Tag(db.Model):
 
@@ -29,3 +30,11 @@ class Tag(db.Model):
                 tag = Tag(name=name_tag)
             db.session.add(tag)
         db.session.commit()
+
+    @staticmethod
+    def all_tags_selection():
+        lista_tags = Tag.query.order_by(asc(Tag.name)).all()
+        selection = []
+        for t in lista_tags:
+            selection.append((t,t))
+        return selection

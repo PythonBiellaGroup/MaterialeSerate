@@ -11,6 +11,8 @@ from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 
 from project.ruoli.models import Ruolo
 from project.ruoli.models import Permission
+from project.blog.models import Post
+from project.commenti.models import Comment
 
 class Utente(UserMixin, db.Model):
     __tablename__ = 'utenti'
@@ -34,28 +36,10 @@ class Utente(UserMixin, db.Model):
     # FK - Ruolo dell'utente
     role_id = db.Column(db.Integer, db.ForeignKey('ruoli.id'))
     '''
-    posts = db.relationship('Post', backref='author', lazy='dynamic')
-    followed = db.relationship('Follow',
-                               foreign_keys=[Follow.follower_id],
-                               backref=db.backref('follower', lazy='joined'),
-                               lazy='dynamic',
-                               cascade='all, delete-orphan')
-    followers = db.relationship('Follow',
-                                foreign_keys=[Follow.followed_id],
-                                backref=db.backref('followed', lazy='joined'),
-                                lazy='dynamic',
-                                cascade='all, delete-orphan')
-    comments = db.relationship('Comment', backref='author', lazy='dynamic')
-
-
-    @staticmethod
-    def add_self_follows():
-        for user in Utente.query.all():
-            if not user.is_following(user):
-                user.follow(user)
-                db.session.add(user)
-                db.session.commit()
+    Per Blog
     '''
+    posts = db.relationship('Post', backref='author', lazy='dynamic')
+    comments = db.relationship('Comment', backref='author', lazy='dynamic')
 
     '''
     Utile per il popolamento dei dati e per i test
@@ -66,6 +50,7 @@ class Utente(UserMixin, db.Model):
         utenti = [ 
             ("test1@test.it", "maurici", "pwd1" ),
             ("test2@test.it", "davcom", "pwd2" ),
+            ("burlesco70@test.it", "burlesco70", "burlesco70" ),
         ]
         for ut in utenti:
             ut_db = Utente.query.filter_by(email=ut[0]).first()
@@ -80,14 +65,11 @@ class Utente(UserMixin, db.Model):
         # Gestione dell'amministratore: email da variabile di ambiente
         if self.ruolo is None:
             if self.email == current_app.config['PBG_ADMIN']:
-                self.ruolo = Ruolo.query.filter_by(name='Administrator').first()
+                self.ruolo = Ruolo.query.filter_by(name='Admin').first()
             if self.ruolo is None:
                 self.ruolo = Ruolo.query.filter_by(default=True).first()
         if self.email is not None and self.avatar_hash is None:
             self.avatar_hash = self.gravatar_hash()
-        '''
-        self.follow(self)
-        '''
 
     @property
     def password(self):
@@ -110,7 +92,6 @@ class Utente(UserMixin, db.Model):
         s = Serializer(current_app.config['SECRET_KEY'])
         try:
             data = s.loads(token.encode('utf-8'))
-            print(data)
         except:
             return False
         if data.get('confirm') != self.id:

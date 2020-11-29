@@ -1,0 +1,13 @@
+Ciao {{ user.username }},
+
+Benvenuto nel Python Biella Group!
+
+Per confermare la tua registrazione, clicca sul seguente link:
+
+{{ url_for('auth.confirm', token=token, _external=True) }}
+
+Cordialmente,
+
+Python Biella Group
+
+(Non rispondere a questa mail, nessuno controlla)

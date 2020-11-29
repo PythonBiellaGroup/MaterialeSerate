@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_bootstrap import Bootstrap
 from config import config
@@ -8,16 +8,19 @@ from flask_login import LoginManager
 from flask_mail import Mail
 # Per gestire profilo / now
 from flask_moment import Moment
+# Per blog
+from flask_pagedown import PageDown
 
 # Use bootstrap with the app
 bootstrap = Bootstrap()
+pagedown = PageDown()
 mail = Mail()
 moment = Moment()
 db = SQLAlchemy()
 
 # Per modulo autenticazione Utente
 login_manager = LoginManager()
-login_manager.login_view = 'utenti.login'
+login_manager.login_view = 'auth.login'
 # Personalizzazione del messaggio di errore su pagina che richiede autenticazione
 login_manager.login_message = u"Autenticati per vedere questa pagina"
 login_manager.login_message_category = "info"
@@ -28,10 +31,11 @@ def create_app(config_name):
     config[config_name].init_app(app)
 
     bootstrap.init_app(app)
+    pagedown.init_app(app)
     mail.init_app(app)
     moment.init_app(app)
     db.init_app(app)
-
+    
     # Per modulo autenticazione Utente
     login_manager.init_app(app)
 
@@ -49,12 +53,25 @@ def create_app(config_name):
     
     from project.serate.routes import serate_blueprint
     app.register_blueprint(serate_blueprint, url_prefix="/serate", url_static="../static")
+
+    from project.blog.routes import blog_blueprint
+    app.register_blueprint(blog_blueprint, url_prefix="/blog", url_static="../static")
+
+    from project.commenti.routes import commenti_blueprint
+    app.register_blueprint(commenti_blueprint, url_prefix="/commenti", url_static="../static")
     
+    from project.main.routes import main_blueprint
+    app.register_blueprint(main_blueprint, url_prefix="/main", url_static="../static")
+
+    from project.auth.routes import auth_blueprint
+    app.register_blueprint(auth_blueprint, url_prefix="/auth", url_static="../static")
+
     from project.error_pages.routes import error_pages_blueprint
     app.register_blueprint(error_pages_blueprint)
-
-    from project.main.routes import main_blueprint
-    app.register_blueprint(main_blueprint)
+    
+    @app.route('/')
+    def index():
+        return redirect(url_for('main.index'))
 
     return app
 

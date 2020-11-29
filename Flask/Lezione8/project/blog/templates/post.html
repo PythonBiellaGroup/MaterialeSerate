@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+{% block content %}
+
+    <!-- Messaggi flash -->
+    <div class="alert alert-primary" role="alert">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category }}" role="alert">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+      </div>
+
+{% include '_posts.html' %}
+
+{% if current_user.can(Permission.COMMENT) %}
+
+<div class="container text-center">
+  <br>
+  <h3>Commenti</h3>
+  <br>
+</div>
+
+<div class="container">
+  <div class="row align-items-center justify-content-center">
+    <div class="comment-form">
+        {{ wtf.quick_form(form, novalidate=True, button_map={'submit':'success'}) }}
+    </div>
+  </div>
+</div>
+
+{% endif %}
+
+{% include '_comments.html' %}
+
+{% if pagination %}
+<div class="pagination">
+    {{ macros.pagination_widget(pagination, 'blog.view_post', fragment='#comments', id=posts[0].id) }}
+</div>
+{% endif %}
+
+{% endblock %}

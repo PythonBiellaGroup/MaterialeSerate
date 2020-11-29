@@ -1,0 +1,11 @@
+Ciao {{ user.username }},
+
+per confermare la tua nuova email, clicca sul seguente link:
+
+{{ url_for('auth.change_email', token=token, _external=True) }}
+
+Cordialmente,
+
+Python Biella Group
+
+(Non rispondere a questa mail, nessuno controlla)

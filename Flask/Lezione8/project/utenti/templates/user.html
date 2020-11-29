@@ -27,7 +27,7 @@
       <p>
           {% if user.name %}{{ user.name }}<br>{% endif %}
           {% if user.location %}
-              from <a href="http://maps.google.com/?q={{ user.location }}">{{ user.location }}</a><br>
+              da <a href="http://maps.google.com/?q={{ user.location }}">{{ user.location }}</a><br>
           {% endif %}
       </p>
       {% endif %}
@@ -35,7 +35,7 @@
       <p><a href="mailto:{{ user.email }}">{{ user.email }}</a></p>
       {% endif %}
       {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
-      <p>Iscritto dal: {{ moment(user.member_since).format('L') }}. Ultima visita: {{ moment(user.last_seen).fromNow() }}.</p>
+      <p>Iscritto dal: {{ moment(user.member_since).format("DD/MM/YYYY") }}. Ultima visita: {{ moment(user.last_seen).fromNow() }}.</p>
       <p>
           {% if user == current_user %}
           <a class="btn btn-success" href="{{ url_for('utenti.edit_profile') }}">Aggiorna profilo</a>
@@ -46,7 +46,10 @@
       </p>
   </div>
 </div>
-
+<br>
 </div>
+<h3>Posts by {{ user.username }}</h3>
+{% include '_posts.html' %}
+
 </div>
 {% endblock %}

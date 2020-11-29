@@ -1,0 +1,101 @@
+{% extends "base.html" %} 
+{% block content %}
+
+    <!-- Messaggi flash -->        
+    <div class="container">
+      {# Flashed messages #}
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }}" role="alert">{{ message }}</div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+      {# End Flashed messages #}
+    </div>        
+
+
+<div class="container text-center">
+    <br>
+    <h1>Lista Utenti</h1>
+    <br>
+</div>
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Utente</th>
+        <th scope="col">Email - Nome</th>
+        <th scope="col">Conferma</th>
+        <th scope="col">Dove vive</th>
+        <th scope="col">Ruolo</th>
+        {% if current_user.is_administrator() %}
+        <th scope="col">Azioni</th>
+        {% endif %}
+      </tr>
+    </thead>
+      <tbody>
+    {% for u in lista_utenti %}
+
+      <tr>
+        <th scope="row">
+            <a href="{{ url_for('utenti.user', username=u.username) }}">
+                <div class="it-right-zone">
+                    <span class="avatar size-lg"><img src="{{ u.gravatar(size=64) }}" alt="{{ u.username }}"></span>
+                    <span class="text">{{ u.username }}</span>
+                </div>
+            </a>
+        </th>
+        <td>{{ u.email }} - {{ u.name }}</td>
+        <td>
+            {% if u.confirmed %}
+              Confermato
+            {% else %}
+              Non confermato
+            {% endif %}
+        </td>
+        <td>
+          {% if u.location %}
+            <a href="http://maps.google.com/?q={{ u.location }}">{{ u.location }}</a>
+          {% else %}
+            Non disponibile
+          {% endif %}
+        </td>
+        <!--Ruolo-->
+        <td>
+          {{ u.ruolo }}
+        </td>
+        {% if current_user.is_administrator() %}
+        <!--Azioni-->
+        <td>
+          <a class="btn btn-primary pull-right" href="{{ url_for('utenti.edit_profile_admin', id=u.id) }}">Aggiorna profilo</a>
+          <!--Modal check -->
+          <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#confermaCancellazione{{u.id}}">Cancella</button>
+          <!-- Modal Cancellazione -->
+          <div class="it-example-modal">
+            <div class="modal" tabindex="-1" role="dialog" id="confermaCancellazione{{u.id}}">
+              <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Conferma operazione</h5>
+                    </div>
+                    <div class="modal-body">
+                      <p>Vuoi procedere con la cancellazione dell'utente {{u.username}} ?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-outline-primary btn-sm" type="button" data-dismiss="modal">Ritorna</button>
+                        <a class="btn btn-danger btn-sm" href="{{ url_for('utenti.utente_delete', id=u.id) }}" role="button">Conferma</a>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>        
+        
+        </td>
+        {% endif %}
+      </tr>
+      {% endfor -%}
+    </tbody>
+  </table>
+
+  {% endblock %}

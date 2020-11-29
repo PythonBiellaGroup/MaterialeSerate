@@ -1,0 +1,51 @@
+{% macro pagination_widget(pagination, endpoint, fragment='') %}
+<nav class="pagination-wrapper justify-content-center" aria-label="macro navigazione">
+    <ul class="pagination">
+      <li 
+        {% if not pagination.has_prev %} 
+            class="page-item disabled"
+        {% else %}
+            class="page-item"
+        {% endif %}
+      >      
+        <a class="page-link" href="{% if pagination.has_prev %}{{ url_for(endpoint, page=pagination.prev_num, **kwargs) }}{{ fragment }}{% else %}#{% endif %}">
+          <svg class="icon icon-primary"><use xlink:href="/static/bootstrap-italia/svg/sprite.svg#it-chevron-left"></use></svg>
+          <span class="sr-only">Pagina precedente</span>
+        </a>
+      </li>
+      {% for p in pagination.iter_pages() %}
+          {% if p %}
+            {% if p == pagination.page %}
+      <li class="page-item">
+        <a class="page-link" href="{{ url_for(endpoint, page = p, **kwargs) }}{{ fragment }}" aria-current="page">
+            <span class="d-inline-block d-sm-none">Pagina </span>{{ p }}
+        </a>          
+      </li> 
+            {% else %}
+      <li class="page-item"><a class="page-link" href="{{ url_for(endpoint, page = p, **kwargs) }}{{ fragment }}">{{ p }}</a></li>
+            {% endif %}
+          {% else %}
+          <li class="page-item">
+            <span class="page-link">...</span>
+          </li>          
+          {% endif %}
+      {% endfor %}
+
+
+      <li 
+        {% if not pagination.has_next %} 
+            class="page-item disabled"
+        {% else %}
+            class="page-item"
+        {% endif %}
+      >      
+        <a class="page-link" href="{% if pagination.has_next %}{{ url_for(endpoint, page=pagination.next_num, **kwargs) }}{{ fragment }}{% else %}#{% endif %}">
+          <svg class="icon icon-primary"><use xlink:href="/static/bootstrap-italia/svg/sprite.svg#it-chevron-right"></use></svg>
+          <span class="sr-only">Pagina successiva</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+
+{% endmacro %}

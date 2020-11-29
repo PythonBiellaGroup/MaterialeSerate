@@ -96,7 +96,7 @@ class EditProfileAdminForm(FlaskForm):
                'Nome utente deve essere composto solo da lettere, numeri, punti o underscores')])
     confirmed = BooleanField('Confermato')
     # coerce => il valore della form è forzato a int
-    role = SelectField('Ruolo', coerce=int)
+    role = SelectField('', coerce=int)
     name = StringField('Nome vero', validators=[Length(0, 64)])
     location = StringField('Dove vivi', validators=[Length(0, 64)])
     about_me = TextAreaField('Altri dettagli personali che vuoi condividere')

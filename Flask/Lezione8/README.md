@@ -1,5 +1,21 @@
 # Devlog
 
+# 7a settimana
+
+Gestione Profilo
+
+Navigation bar
+
+Post
+
+Commenti
+
+Corso
+- Aggiunta stato (completo, in corso, organizzato, da organizzare)
+- Aggiunta link github/documentazione
+- Aggiunta gestione tag in Edit Corso (relazione N:N)
+
+
 # 6a settimana
 
 Autenticazione
@@ -71,10 +87,22 @@ Autorizzazioni alle operazioni
 - Creato Blueprint per Serate
 - Sistemata cartella static dai Blueprint
 
+# Applicazioni semplici Flask da cui imparare
+
+Riferimento per il libro:
+https://github.com/miguelgrinberg/flasky
+
+https://github.com/OmkarPathak/A-Simple-Note-Taking-Web-App
+
+# TO DO Modello
+
+Ruolo
+- Aggiungere "moderatore" ?
+
 # TO DO App
-- Pagina dettaglio serata : edit serata
+- CSS utenti e blog
 - Immagine statica corso
-- Finestre modali, per ora applicate solo a Tag
+
 
 # Corso Flask
 ## Progetto di esempio

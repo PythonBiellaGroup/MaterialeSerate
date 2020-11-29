@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+<!-- Messaggi flash -->
+<div class="container">
+    {# Flashed messages #}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}" role="alert">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    {# End Flashed messages #}
+  </div>
+
+
+<div class="container text-center">
+    <br>
+    <h1>Cambio indirizzo email</h1>
+    <br>
+</div>
+
+<div class="container">
+  <div class="row align-items-center justify-content-center">
+
+    <div class="col-md-4">
+    {{ wtf.quick_form(form, novalidate=True, button_map={'submit':'success'}) }}
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

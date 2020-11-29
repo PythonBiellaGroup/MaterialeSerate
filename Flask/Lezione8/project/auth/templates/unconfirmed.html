@@ -1,0 +1,33 @@
+{% extends "base.html" %} 
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+
+<!-- Messaggi flash -->
+<div class="container">
+  {# Flashed messages #}
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }}" role="alert">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  {# End Flashed messages #}
+</div>
+
+<div class="container text-center">
+    <h1>
+        Ciao {{ current_user.username }}!
+    </h1>
+    <h3>Non hai ancora confermato il tuo account.</h3>
+    <p>
+        Prima di accedere al sito devi confermare la tua registrazione.
+        Controlla la posta in arrivo, dovresti aver ricevuto una email con il link di conferma.
+    </p>
+    <p>
+        Serve una nuova email?
+        <a class="btn btn-primary" href="{{ url_for('auth.resend_confirmation') }}">Manda nuova mail</a>
+    </p>
+</div>
+
+{% endblock %}

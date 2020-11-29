@@ -13,7 +13,7 @@
   
 <div class="container text-center">
     <br>
-    <h1>Programma di {{ corso.nome }}</h1>
+    <h1>Programma di {{ corso.nome }} <span class="badge badge-secondary"> {{ corso.stato_corso }}</span></h1>
     <br>
 
 
@@ -31,8 +31,11 @@
     </h3>
     {% endif %}
 
-    <h4 class="display-4">Insegnante <span class="badge badge-success">{{corso.insegnante}}</span></h4>
+    <h4 class="display-4">Insegnante/i <span class="badge badge-success">{{corso.insegnante}}</span></h4>
     <h4 class="display-4">Livello <span class="badge badge-warning">{{corso.livello}}</span></h4>
+    {% if corso.link_materiale %}
+    <h4 class="display-4"><a href="{{corso.link_materiale}}">Materiale e documentazione</a></h4>
+    {% endif %}
 
   </div>    <!--end center -->
 
@@ -76,6 +79,55 @@
   {% endif %}
 
   {% if current_user.is_administrator() %}
+  <br>
+  <div class="container text-center">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#confermaModifica">Modifica</button>      
+    <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#confermaCancellazione">Cancella il corso</button>
+      <!-- Modal Modifica -->
+      <div class="it-example-modal">
+        <div class="modal" tabindex="-1" role="dialog" id="confermaModifica">
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Conferma operazione</h5>
+                </div>
+                <div class="modal-body">
+                  <p>Vuoi procedere con la modifica ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline-primary btn-sm" type="button" data-dismiss="modal">Ritorna</button>
+                    <a class="btn btn-primary btn-sm" href="{{ url_for('corsi.corso_edit', id=corso.id) }}" role="button">Conferma</a>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>      
+
+    <!-- Modal Cancellazione -->
+    <div class="it-example-modal">
+      <div class="modal" tabindex="-1" role="dialog" id="confermaCancellazione">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                  <h5 class="modal-title">Conferma operazione</h5>
+              </div>
+              <div class="modal-body">
+                <p>Vuoi procedere con la cancellazione ?</p>
+              </div>
+              <div class="modal-footer">
+                  <button class="btn btn-outline-primary btn-sm" type="button" data-dismiss="modal">Ritorna</button>
+                  <a class="btn btn-danger btn-sm" href="{{ url_for('corsi.corso_delete', id=corso.id) }}" role="button">Conferma</a>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>      
+
+  </div>
+  <br>
+
+
+
   <!--Aggiungi serate-->
   <div class="container text-center">
     <br>
@@ -185,10 +237,9 @@
 
 
     <br>
-    <div class="container text-center">
-      <a class="btn btn-danger pull-right" href="{{ url_for('corsi.corso_delete', id=corso.id) }}">Cancella il corso</a>
-    </div>
-    <br>
+
+
+
   {% endif %}
   
 {% endblock %}

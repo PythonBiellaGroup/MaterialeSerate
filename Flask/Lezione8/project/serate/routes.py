@@ -23,10 +23,6 @@ from project.serate.forms import SerataForm
 from project import db
 from project.decorators import admin_required
 
-
-
-
-
 # Define blueprint
 serate_blueprint = Blueprint(
     "serate", 
@@ -85,6 +81,9 @@ def serata_delete(id):
         flash("Errore durante la cancellazione della serata: %s" % str(e), 'danger')
     return redirect(url_for('serate.lista'))
 
+'''
+Edit serata
+'''
 @serate_blueprint.route('/edit/<int:id>', methods=['GET', 'POST'])
 @login_required
 @admin_required

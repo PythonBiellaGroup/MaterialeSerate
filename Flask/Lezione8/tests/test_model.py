@@ -2,7 +2,7 @@ import re
 import unittest
 from project import create_app, db
 from project.serate.models import Serata
-from project.corsi.models import Corso
+from project.corsi.models import Corso, StatoCorso
 from project.tags.models import Tag
 from project.utenti.models import Utente
 from project.ruoli.models import Ruolo
@@ -34,7 +34,7 @@ class FlaskModelTestCase(unittest.TestCase):
         c = Corso.query.filter_by(nome="Flask").first()
         #print(c)
         self.assertTrue(c.nome == "Flask")
-        self.assertTrue(c.insegnante == "Andrea Guzzo")
+        self.assertTrue(c.insegnante == "Andrea Guzzo e Mario Nardi")
         self.assertFalse(c.insegnante == "Mario Nardi")
 
     def test_check_serata(self):
@@ -43,7 +43,7 @@ class FlaskModelTestCase(unittest.TestCase):
 
     def test_check_utente(self):
         u = Utente.query.filter_by(email="test1@test.it").first()
-        self.assertTrue(u.username == "burlesco70")
+        self.assertTrue(u.username == "maurici")
         self.assertTrue(u.password_hash is not None)
         self.assertTrue(u.verify_password('pwd1'))
         

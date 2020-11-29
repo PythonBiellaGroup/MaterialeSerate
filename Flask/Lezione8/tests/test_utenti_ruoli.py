@@ -118,7 +118,7 @@ class UserModelTestCase(unittest.TestCase):
         self.assertFalse(u.can(Permission.ADMIN))
 
     def test_administrator_role(self):
-        r = Ruolo.query.filter_by(name='Administrator').first()
+        r = Ruolo.query.filter_by(name='Admin').first()
         u = Utente(email='john@example.com', password='cat', ruolo=r)
         self.assertTrue(u.can(Permission.FOLLOW))
         self.assertTrue(u.can(Permission.COMMENT))

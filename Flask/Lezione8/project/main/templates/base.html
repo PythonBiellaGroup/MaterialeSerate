@@ -11,10 +11,11 @@
       window.__PUBLIC_PATH__ = "static/bootstrap-italia/fonts";
     </script>
     <script src="{{ url_for('static',filename='bootstrap-italia/js/bootstrap-italia.bundle.min.js') }}"></script>
-
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='blog_styles.css') }}">
     <title>PythonBiellaGroup App</title>
   </head>
 </html>
+
 <body>
   <div class="it-header-wrapper">
     <div class="it-header-slim-wrapper">
@@ -22,18 +23,13 @@
         <div class="row">
           <div class="col-12">
             <div class="it-header-slim-wrapper-content">
-              <!--Gestione link PROFILO -->
-              {% if current_user.is_authenticated %}
-              <a class="d-none d-lg-block navbar-brand" href="{{ url_for('utenti.user', username=current_user.username) }}">Il tuo profilo</a>
-              {% else %}
-              <a class="d-none d-lg-block navbar-brand" href="#">Python Biella Group</a>
-              {% endif %}
+              <a class="d-none d-lg-block navbar-brand" href="{{ url_for('main.index') }}">Tutti i post</a>
               <div class="nav-mobile">
                 <nav>
                   <a class="it-opener d-lg-none" data-toggle="collapse" href="#menu4" role="button" aria-expanded="false" aria-controls="menu4">
                     <span>Python Biella Group</span>
                     <svg class="icon">
-                      <use xlink:href="/static/bootstrap-italia/svg/sprite.svg#it-expand"></use>
+                      <use xlink:href="{{ url_for('static',filename='bootstrap-italia/svg/sprite.svg#it-expand')}}"></use>
                     </svg>
                   </a>
                   <div class="link-list-wrapper collapse" id="menu4">
@@ -44,41 +40,66 @@
                   </div>
                 </nav>
               </div>
+
+
+              <!--Drop down menu - Gestione profilo-->
               <div class="it-header-slim-right-zone">
+              {% if current_user.is_authenticated %}
+              
                 <div class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-                    <span>ITA</span>
+                    <span>{{ current_user.username }}</span>
                     <svg class="icon d-none d-lg-block">
                       <use xlink:href="/static/bootstrap-italia/svg/sprite.svg#it-expand"></use>
                     </svg>
                   </a>
-                  <div class="dropdown-menu">
-                    <div class="row">
-                      <div class="col-12">
-                        <div class="link-list-wrapper">
-                          <ul class="link-list">
-                            <li><a class="list-item" href="#"><span>ITA</span></a></li>
-                            <li><a class="list-item" href="#"><span>ENG</span></a></li>
-                          </ul>
-                        </div>
+                <div class="dropdown-menu">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="link-list-wrapper">
+                        <ul class="link-list">
+                            <li><a class="list-item large" href="{{ url_for('utenti.user', username=current_user.username) }}"><span>Profilo</span></a></li>
+                            <li><a class="list-item large" href="{{url_for('auth.change_email_request')}}"><span>Cambia mail</span></a></li>
+                            <li><a class="list-item large" href="{{url_for('auth.change_password')}}"><span>Cambia pwd</span></a></li>
+                            <li> <span class="divider"></span></li>                            
+
+                            {% if current_user.can(Permission.MODERATE) %}
+                            <li><a class="list-item large" href="{{ url_for('commenti.moderate') }}"><span>Commenti</span></a></li>
+                            <li> <span class="divider"></span></li>                            
+                            {% endif %}
+            
+
+
+                            <li><a class="list-item large" href="{{url_for('auth.logout')}}"><span>Esci</span></a></li>
+                        </ul>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="it-access-top-wrapper">
-                  <!--Gestione LOGIN / LOGOUT -->
-                  {% if current_user.is_authenticated %}
-                  <a class="btn btn-primary btn-sm" href="{{url_for('utenti.logout')}}">{{ current_user.username }}, esci</a>
-                  {% else %}
-                  <a class="btn btn-primary btn-sm" href="{{url_for('utenti.login')}}">Accedi</a>
-                  {% endif %}
-                </div>
-              </div>
-            </div>
+
+              {% else %}
+              <!--Login -->
+              <a href="{{url_for('auth.login')}}" class="btn btn-primary btn-icon btn-full">
+                <span class="rounded-icon">
+                  <svg class="icon icon-primary">
+                    <use
+                      xlink:href="/static/bootstrap-italia/svg/sprite.svg#it-user"
+                    ></use>
+                  </svg>
+                </span>
+                <span class="d-none d-lg-block">Accedi all'area personale</span>
+              </a>              
+              {% endif %}
+            </div>              
+            
+          
           </div>
+            </div>
         </div>
       </div>
     </div>
+  </div>
+    
     <div class="it-nav-wrapper">
       <div class="it-header-center-wrapper">
         <div class="container">
@@ -125,14 +146,6 @@
                       </li>
                     </ul>
                   </div>
-                  <div class="it-search-wrapper">
-                    <span class="d-none d-md-block">Cerca</span>
-                    <a class="search-link rounded-icon" aria-label="Cerca" href="#">
-                      <svg class="icon">
-                        <use xlink:href="/static/bootstrap-italia/svg/sprite.svg#it-search"></use>
-                      </svg>
-                    </a>
-                  </div>
                 </div>
               </div>
             </div>
@@ -164,29 +177,8 @@
                       <li class="nav-item active"><a class="nav-link active" href="{{ url_for('serate.lista') }}"><span>Serate</span><span class="sr-only">current</span></a></li>
                       <li class="nav-item"><a class="nav-link" href="{{ url_for('corsi.lista') }}"><span>Corsi</span></a></li>
                       <li class="nav-item"><a class="nav-link" href="{{ url_for('tags.tags') }}"><span>Tags</span></a></li>
-                      <li class="nav-item"><a class="nav-link" href="#"><span>Utenti</span></a></li>
-                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-                          <span>Scegli...</span>
-                          <svg class="icon icon-xs">
-                            <use xlink:href="/static/bootstrap-italia/svg/sprite.svg#it-expand"></use>
-                          </svg>
-                        </a>
-                        <div class="dropdown-menu">
-                          <div class="link-list-wrapper">
-                            <ul class="link-list">
-                              <li>
-                                <h3 class="no_toc" id="heading-es-5">Entità</h3>
-                              </li>
-                              <li><a class="list-item" href="{{ url_for('serate.prossime') }}"><span>Serate</span></a></li>
-                              <li><a class="list-item" href="{{ url_for('corsi.lista') }}"><span>Corsi</span></a></li>
-                              <li><a class="list-item" href="{{ url_for('tags.tags') }}"><span>Tags</span></a></li>
-                              <li><span class="divider"></span></li>
-                              <li><a class="list-item" href="#"><span>Utenti</span></a></li>
-                            </ul>
-                          </div>
-                        </div>
-                      </li>
+                      <li class="nav-item"><a class="nav-link" href="{{ url_for('utenti.lista') }}"><span>Utenti</span></a></li>
+                      {% if current_user.is_administrator() %}
                       <li class="nav-item dropdown megamenu">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
                           <span>Megamenu!</span>
@@ -232,6 +224,7 @@
                           </div>
                         </div>
                       </li>
+                      {% endif %}
                     </ul>
                   </div>
                 </div>
@@ -249,6 +242,7 @@
 
 {% block scripts %}
 {{ moment.include_moment() }}
+{{ moment.locale("it") }}
 {% endblock %}
 
 </body>

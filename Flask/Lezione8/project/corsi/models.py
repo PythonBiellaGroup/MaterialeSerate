@@ -1,9 +1,17 @@
 from project import db
+
 from project.tags.models import Tag
 
 '''
 Oggetti Tabella relativi al modulo "corsi"
 '''
+
+class StatoCorso:
+    COMPLETATO = "Completato"
+    IN_CORSO = "In corso"
+    PIANIFICATO = "Pianificato"
+    IN_PREVISIONE = "In previsione"
+
 # corso_tags - tabella di relazione N:N tra Corso e Tag
 tags = db.Table(
     "corso_tags",
@@ -23,8 +31,11 @@ class Corso(db.Model):
     insegnante = db.Column(db.String(100))
     livello = db.Column(db.String(100))
     descrizione = db.Column(db.String(255))
-    # Immagine logo da cartella static, se presente
+    # Immagine logo da cartella static, se presente (non usato per ora)
     logo_img = db.Column(db.String(100))
+    stato_corso = db.Column(db.String(30))
+    # 
+    link_materiale = db.Column(db.String(255))
 
     # Relazione 1:n; ordinamento serate per data
     serate = db.relationship(
@@ -37,18 +48,20 @@ class Corso(db.Model):
     )
 
     # Costruttore
-    def __init__(self, nome, insegnante, livello, descrizione, logo_img=""):
+    def __init__(self, nome, insegnante, livello, descrizione, logo_img="", stato_corso=StatoCorso.IN_PREVISIONE, link_materiale=""):
         self.nome = nome
         self.insegnante = insegnante
         self.livello = livello
         self.descrizione = descrizione
         self.logo_img = logo_img
+        self.stato_corso = stato_corso
+        self.link_materiale = link_materiale
         # self.serate = serate
         # self.tags = tags
 
     # Visualize object corso informations
     def __repr__(self):
-        return "\n{}: {} è tenuto da {}. Livello {}. Id {}. Tags {}. Logo {}".format(
+        return "\n{}: {} è tenuto da {}. Livello {}. Id {}. Tags {}. Logo {}. Stato {}. Materiale {}".format(
             self.nome,
             self.descrizione,
             self.insegnante,
@@ -56,6 +69,8 @@ class Corso(db.Model):
             self.id,
             self.tags,
             self.logo_img,
+            self.stato_corso,
+            self.link_materiale
         )
 
     '''
@@ -66,9 +81,9 @@ class Corso(db.Model):
     def insert_test_corsi():
 
         corsi = [ 
-            ( "Flask", "Andrea Guzzo e Mario Nardi", "Intermedio", "Corso sul microframework Flask", "flask-icon.png" ),
-            ( "Pygame", "Mario Nardi", "Principiante", "Introduzione a Pygame", "pygame-icon.png" ),
-            ( "Pandas", "Maria Teresa Panunzio", "Intermedio", "Corso base per manipolare i dataframes" )
+            ( "Flask", "Andrea Guzzo e Mario Nardi", "Intermedio", "Corso sul microframework Flask", "flask-icon.png", StatoCorso.IN_CORSO, "https://github.com/PythonGroupBiella/MaterialeLezioni/tree/master/Flask" ),
+            ( "Pygame", "Mario Nardi", "Principiante", "Introduzione a Pygame", "pygame-icon.png", StatoCorso.IN_PREVISIONE ),
+            ( "Pandas", "Maria Teresa Panunzio", "Intermedio", "Corso base per manipolare i dataframes", StatoCorso.IN_PREVISIONE )
         ]
         
         # Prende i tags dal db

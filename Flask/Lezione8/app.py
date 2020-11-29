@@ -30,7 +30,7 @@ Use shell_context_processor() to add other automatic imports.
 '''
 @app.shell_context_processor
 def make_shell_context():
- return dict(db=db, Tag=Tag, Corso=Corso, Serata=Serata, Ruolo=Ruolo, Utente=Utente)
+ return dict(db=db, Tag=Tag, Corso=Corso, Serata=Serata, Ruolo=Ruolo, Utente=Utente, Post=Post, Comment=Comment)
 
 '''
 Per i test di unità automatici, il decorator

@@ -1,0 +1,7 @@
+TUTORIAL
+http://ncassetta.altervista.org/Tutorial_Pygame/
+
+Visual Novel Engine
+https://renpy.org/
+
+https://github.com/richardbenson91477/pygames

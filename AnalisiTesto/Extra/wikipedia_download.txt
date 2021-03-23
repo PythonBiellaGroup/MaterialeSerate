@@ -1,0 +1,51 @@
+"""
+ 
+wget https://dumps.wikimedia.org/itwiki/latest/itwiki-latest-pages-articles.xml.bz2
+python3 WikiExtractor.py -o output --processes 8 --json  itwiki-latest-pages-articles.xml.bz2
+ 
+"""
+ 
+ 
+import wikipedia as wk
+import re
+import time
+import datetime
+ 
+wk.set_lang('it')
+ 
+keyword = ''
+ 
+# 500 è il max
+risps = wk.search(keyword,  results = 500, suggestion = True)
+ 
+i = 0
+ 
+for titolo in risps[0]:
+ 
+    i = i + 1
+ 
+    # Serve come contatore perchè a volte va in errore nella ricerca tramite titolo
+    if i >= 0:
+ 
+        try:
+ 
+            page = wk.page(title=titolo)
+ 
+ 
+            titolo = f"<title>{titolo}</title>"
+            contenuto = f"<body>{page.content}</body>"
+            categorie = f"<categories>{page.categories}</categories>"
+ 
+            articolo = f"<article>{titolo}{contenuto}{categorie}</article>"
+ 
+            with open(f"articolo_{keyword}_{i}.txt", 'w') as f:
+                f.write(articolo)
+ 
+            print(f'articolo_{keyword}_{i}.txt - {datetime.datetime.now()} - last n.{i}')
+ 
+            time.sleep(1)
+        except Exception as err:
+            print(err)
+            print(f'Fine: {datetime.datetime.now()} - last n.{i}')
+            break
+ 

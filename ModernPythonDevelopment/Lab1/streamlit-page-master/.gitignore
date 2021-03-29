@@ -102,7 +102,7 @@ celerybeat-schedule
 celerybeat.pid
 
 # IDE Settings
-.vscode
+#.vscode
 
 # SageMath parsed files
 *.sage.py

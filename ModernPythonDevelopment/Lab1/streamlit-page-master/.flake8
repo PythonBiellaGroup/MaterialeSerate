@@ -1,0 +1,4 @@
+[flake8]
+select = B,B9,BLK,C,E,F,I,S,W
+exclude = .venv, .poetry, **/protobuf/models
+max-line-length = 80

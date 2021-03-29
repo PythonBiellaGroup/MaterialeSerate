@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-
 st.set_page_config(
     layout="wide",
 )
@@ -10,7 +9,9 @@ st.set_page_config(
 
 @st.cache
 def get_iris() -> pd.DataFrame:
-    return pd.read_csv('https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv')
+    return pd.read_csv(
+        "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv"
+    )
 
 
 iris = get_iris()
@@ -22,31 +23,29 @@ min_sepal_length, max_sepal_length = st.sidebar.slider(
     "Select sepal length range:",
     min(iris.sepal_length),
     min(iris.sepal_length),
-    (min(iris.sepal_length), max(iris.sepal_length))
+    (min(iris.sepal_length), max(iris.sepal_length)),
 )
 min_sepal_width, max_sepal_width = st.sidebar.slider(
     "Select sepal length range:",
     min(iris.sepal_width),
     min(iris.sepal_width),
-    (min(iris.sepal_width), max(iris.sepal_width))
+    (min(iris.sepal_width), max(iris.sepal_width)),
 )
 min_petal_length, max_petal_length = st.sidebar.slider(
     "Select sepal length range:",
     min(iris.petal_length),
     min(iris.petal_length),
-    (min(iris.petal_length), max(iris.petal_length))
+    (min(iris.petal_length), max(iris.petal_length)),
 )
 min_petal_width, max_petal_width = st.sidebar.slider(
     "Select sepal length range:",
     min(iris.petal_width),
     min(iris.petal_width),
-    (min(iris.petal_width), max(iris.petal_width))
+    (min(iris.petal_width), max(iris.petal_width)),
 )
 
 species = st.sidebar.multiselect(
-    "Select species:",
-    list(iris.species.unique()),
-    list(iris.species.unique())
+    "Select species:", list(iris.species.unique()), list(iris.species.unique())
 )
 
 restrict = pd.DataFrame(
@@ -56,15 +55,15 @@ restrict = pd.DataFrame(
         ["petal_length", min_petal_length, max_petal_length],
         ["petal_width", min_petal_width, max_petal_width],
     ],
-    columns=["feature", "minimal", "maximal"]
+    columns=["feature", "minimal", "maximal"],
 )
 
 filtered_iris = iris.loc[
-    iris.sepal_length.between(min_sepal_length, max_sepal_length) &
-    iris.sepal_width.between(min_sepal_width, max_sepal_width) &
-    iris.petal_length.between(min_petal_length, max_petal_length) &
-    iris.petal_width.between(min_petal_width, max_petal_width) &
-    iris.species.isin(species)
+    iris.sepal_length.between(min_sepal_length, max_sepal_length)
+    & iris.sepal_width.between(min_sepal_width, max_sepal_width)
+    & iris.petal_length.between(min_petal_length, max_petal_length)
+    & iris.petal_width.between(min_petal_width, max_petal_width)
+    & iris.species.isin(species)
 ]
 
 st.markdown(
@@ -79,9 +78,11 @@ st.markdown(
 )
 
 st.title("Streamlit Test App")
-st.write("""
+st.write(
+    """
 Some *basic* [__Streamlit__](https://www.streamlit.io/) App to explore Data!
-""")
+"""
+)
 
 st.write("### Iris Dataset")
 st.write(f"Using following restrictions:")
@@ -100,7 +101,8 @@ feature_list = [
 ]
 
 features = st.multiselect("Select Features:", feature_list, feature_list[0:2])
-fig = px.scatter_matrix(filtered_iris, dimensions=features,
-                        color="species", height=800)
+fig = px.scatter_matrix(
+    filtered_iris, dimensions=features, color="species", height=800
+)
 
 st.plotly_chart(fig, use_container_width=True)

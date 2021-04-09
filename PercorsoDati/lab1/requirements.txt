@@ -1,0 +1,8 @@
+numpy
+pandas
+datetime
+ipykernel
+jupytext
+matplotlib
+nycflights13
+

@@ -1,16 +1,40 @@
 # Percorso Dati
 
-Serie di 4 serate che hanno come obiettivo lo sviluppo di una semplice soluzione di analisi dei dati partendo da un dataset open source (Seattle Airbnb Data).
+Serie di 4 serate che hanno come obiettivo lo sviluppo di una semplice soluzione di analisi dei dati partendo da un dataset open source (Rome Airbnb Data).
 Le serate saranno tenute da:
 - Andrea Melloncelli
 - Andrea Guzzo
 
-Link al dataset:
-- https://www.kaggle.com/airbnb/seattle
+Lo scopo della serata è quella di simulare un processo di analisi su un determinato dataset, lavorando in team partendo dalle analisi esplorative fino alla messa in produzione di una dashboard interattiva
 
-Le serate saranno divise in:
-1. Pandas: revisione nozioni e implementazione manipolazione ed analisi
-2. Dataviz con Plotly: visualizzazione dei grafici
-3. Streamlit: dai notebook ad una dashboard interattiva
-4. Messa in produzione, papermill e concetti avanzati
+Link al dataset e alla dashboard di riferimento:
+[Inside Airbnb Rome Dataset and Dashboard](http://insideairbnb.com/rome/)
+
+Le serate saranno divise in quattro laboratori
+- Lab1 Pandas: revisione nozioni e implementazione manipolazione ed analisi sul dataset
+- Lab2 Dataviz con Plotly: grafici e visualizzazione del dataset
+- Lab3 Streamlit: dai notebook ad una dashboard interattiva
+- Lab4 Messa in produzione, papermill e concetti avanzati
+
+# Accedere ai notebook
+
+Per accedere ai notebook è possibile utilizzare anche Google Colab:
+
+- **Notebook Laboratorio 1**
+    - Nozioni su Pandas: [![Nozioni su Pandas](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/PythonBiellaGroup/MaterialeLezioni/blob/preparazione/PercorsoDati/lab1/lab1-pandas-intro.ipynb)
+
+    - Analisi Dataset 1: [![Analisi Dataset 1](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/PythonBiellaGroup/MaterialeLezioni/blob/preparazione/PercorsoDati/lab1/lab-1-example-1.ipynb)
+
+    - Analisi Dataset 2: [![Analisi Dataset 2](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/PythonBiellaGroup/MaterialeLezioni/blob/preparazione/PercorsoDati/lab1/lab-1-example-2.ipynb)
+
+- **Notebook Laboratorio 2**
+    - Non ancora disponibili 
+
+- **Notebook Laboratorio 3**
+    - Non ancora disponibili
+
+- **Notebook Laboratorio 4**
+    - Non ancora disponibili
+
+
 

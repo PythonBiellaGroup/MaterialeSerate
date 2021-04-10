@@ -1,4 +1,5 @@
 [flake8]
 select = B,B9,BLK,C,E,F,I,S,W
-exclude = .venv, .poetry, **/protobuf/models
-max-line-length = 80
+exclude = .venv, .poetry, **/protobuf/models, .vscode, __pychache__
+ignore = E501, W503, E226, E203, W503
+max-line-length = 120

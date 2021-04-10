@@ -1,1 +1,5 @@
 .vscode/*
+data/calendar.csv
+data/listings.csv
+data/reviews.csv 
+

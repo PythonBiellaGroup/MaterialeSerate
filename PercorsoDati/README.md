@@ -37,4 +37,23 @@ Per accedere ai notebook è possibile utilizzare anche Google Colab:
     - Non ancora disponibili
 
 
+# Lanciare il Progetto
 
+Il progetto è stato realizzato utilizzando `Poetry`
+
+Per lanciare il progetto e costruire il virtualenv con le librerie necessarie consigliamo di utilizzare
+- `pyenv` con python 3.8^
+- `poetry`
+
+È disponibile comunque un requirements.txt per creare il vostro virtual environment all'interno della cartella.
+
+All'interno di questa cartella, una volta clonata sulla vostra macchina fare:
+```bash
+#Installare le librerie
+poetry install
+
+#Lanciare la shell con il nuovo venv
+poetry shell
+
+#Ora potete usare l'ambiente
+```

@@ -11,24 +11,28 @@ Link al dataset e alla dashboard di riferimento:
 [Inside Airbnb Rome Dataset and Dashboard](http://insideairbnb.com/rome/)
 
 Le serate saranno divise in quattro laboratori
-- Lab1 Pandas: revisione nozioni e implementazione manipolazione ed analisi sul dataset
-- Lab2 Dataviz con Plotly: grafici e visualizzazione del dataset
-- Lab3 Streamlit: dai notebook ad una dashboard interattiva
-- Lab4 Messa in produzione, papermill e concetti avanzati
+- **Lab1 Pandas**: revisione nozioni e implementazione manipolazione ed analisi sul dataset
+- **Lab2 Data visualization**: grafici e visualizzazione del dataset
+- **Lab3 Streamlit**: dai notebook ad una dashboard interattiva
+- **Lab4 Messa in produzione**: papermill e concetti avanzati
 
 # Accedere ai notebook
 
 Per accedere ai notebook è possibile utilizzare anche Google Colab:
 
 - **Notebook Laboratorio 1**
-    - Nozioni su Pandas: [![Nozioni su Pandas](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/PythonBiellaGroup/MaterialeLezioni/blob/preparazione/PercorsoDati/lab1/lab1-pandas-intro.ipynb)
+    - Nozioni su Pandas: [![Nozioni su Pandas](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/PythonBiellaGroup/MaterialeLezioni/blob/master/PercorsoDati/lab1/lab1-pandas-intro.ipynb)
 
-    - Analisi Dataset 1: [![Analisi Dataset 1](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/PythonBiellaGroup/MaterialeLezioni/blob/preparazione/PercorsoDati/lab1/lab-1-example-1.ipynb)
+    - Analisi Dataset 1: [![Analisi Dataset 1](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/PythonBiellaGroup/MaterialeLezioni/blob/master/PercorsoDati/lab1/lab-1-example-1.ipynb)
 
-    - Analisi Dataset 2: [![Analisi Dataset 2](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/PythonBiellaGroup/MaterialeLezioni/blob/preparazione/PercorsoDati/lab1/lab-1-example-2.ipynb)
+    - Analisi Dataset 2: [![Analisi Dataset 2](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/PythonBiellaGroup/MaterialeLezioni/blob/master/PercorsoDati/lab1/lab-1-example-2.ipynb)
+
+    - Ingegnerizzazione del processo di Input: [![Ingegnerizzazione input](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/PythonBiellaGroup/MaterialeLezioni/blob/master/PercorsoDati/lab1/lab-1-data.ipynb)
 
 - **Notebook Laboratorio 2**
-    - Non ancora disponibili 
+    - Data visualization intro: [![Concetti di Data visualization](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/PythonBiellaGroup/MaterialeLezioni/blob/master/PercorsoDati/Lab2/lab-2-viz-intro.ipynb)
+
+    - Data visualization sul dataset: [![Visualizzazione dei dati sul notebook](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/PythonBiellaGroup/MaterialeLezioni/blob/master/PercorsoDati/Lab2/lab-2-viz-intro.ipynb)
 
 - **Notebook Laboratorio 3**
     - Non ancora disponibili

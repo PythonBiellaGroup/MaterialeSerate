@@ -30,9 +30,9 @@ Per accedere ai notebook è possibile utilizzare anche Google Colab:
     - Ingegnerizzazione del processo di Input: [![Ingegnerizzazione input](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/PythonBiellaGroup/MaterialeLezioni/blob/master/PercorsoDati/lab1/lab-1-data.ipynb)
 
 - **Notebook Laboratorio 2**
-    - Data visualization intro: [![Concetti di Data visualization](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/PythonBiellaGroup/MaterialeLezioni/blob/master/PercorsoDati/Lab2/lab-2-viz-intro.ipynb)
+    - Data visualization intro: [![Concetti di Data visualization](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/PythonBiellaGroup/MaterialeLezioni/blob/master/PercorsoDati/Lab2/lab-2-viz-intro.ipynb)
 
-    - Data visualization sul dataset: [![Visualizzazione dei dati sul notebook](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/PythonBiellaGroup/MaterialeLezioni/blob/master/PercorsoDati/Lab2/lab_2_example_1.ipynb)
+    - Data visualization sul dataset: [![Visualizzazione dei dati sul notebook](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/PythonBiellaGroup/MaterialeLezioni/blob/master/PercorsoDati/Lab2/lab_2_example_1.ipynb)
 
 - **Notebook Laboratorio 3**
     - Non ancora disponibili

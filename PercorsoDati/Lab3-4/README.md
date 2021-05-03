@@ -64,11 +64,42 @@ If you want to see some documentation about poetry and pyenv please check the do
 ```bash
 #Install the libraries
 poetry install
+```
 
+If you want to launch the project remember to launch the ETL first to download and prepare the data, then launch:
+```bash
 #Launch the project
 streamlit run main.py
+```
+
+
+## ETL
+
+The dashboard is based on a custom ETL program.
+
+The ETL have this functionalities:
+- Extract and download the information
+- Transform: the data into a usable version by dashboard
+- Load: extract the csv saving to disk
+
+We suggest to execute the ETL before launching the dashboard:
+```bash
+
+#After the installation do
+python etl.py
 
 ```
+
+
+## Launch the code with Docker
+
+If you have Docker and Docker compose installed in your system you can install and launch the dashboard by doing
+```bash
+#Launch the dockercompose + build in detach mode
+docker-compose up --build -d
+```
+You can visualize the dashboard in the following url: http://localhost:8051
+
 
 ## Launch the Documentation
 

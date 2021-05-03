@@ -23,7 +23,7 @@ RUN pip install "poetry==$POETRY_VERSION"
 
 # Copy only requirements to cache them in docker layer
 WORKDIR /server
-COPY poetry.lock pyproject.toml /server/
+COPY pyproject.toml /server/
 
 #update pip to avoid problems 
 # RUN python3 -m pip instal --upgrade pip
@@ -40,17 +40,6 @@ ENV PYTHONPATH /server
 
 RUN mkdir -p /root/.streamlit
 
-#Set the streamlit environment config
-# RUN bash -c 'echo -e "\
-#     [general]\n\
-#     email = \"\"\n\
-#     " > /root/.streamlit/credentials.toml'
-
-# RUN bash -c 'echo -e "\
-#     [server]\n\
-#     enableCORS = false\n\
-#     " > /root/.streamlit/config.toml'
-
 # Copy streamlit production configuration
 COPY ./config/config.toml /root/.streamlit/config.toml
 
@@ -59,6 +48,3 @@ RUN ["chmod", "+x", "./scripts/run_etl.sh"]
 RUN ["chmod", "+x", "./scripts/run_streamlit.sh"]
 RUN ["/bin/bash", "./scripts/run_etl.sh"]
 ENTRYPOINT ["/bin/bash", "./scripts/run_streamlit.sh"]
-# ENTRYPOINT [ "streamlit","run" ]
-# CMD ["python3 ./etl.py","app.py"]
-# CMD python3 server.py

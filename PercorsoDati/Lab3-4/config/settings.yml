@@ -1,0 +1,18 @@
+{
+  "plots": { "plot1": "barplot", "plot2": "histogram", "plot3": "dynamic" },
+  "dataset":
+    {
+      "listings": "listings_sample.csv",
+      "reviews": "reviews_sample.csv",
+      "calendar": "calendar_sample.csv",
+    },
+  "data_path": "data",
+  "csv_args":
+    {
+      "engine": "python",
+      "sep": ",",
+      "encoding": "utf-8",
+      "error_bad_lines": "False",
+      "nrows": 10000,
+    },
+}

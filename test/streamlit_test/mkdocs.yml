@@ -1,0 +1,139 @@
+# To launch mkdocs use: mkdocs serve
+# To launch with debug mode use: mkdocs serve -v
+# To build mkdocs use: mkdocs build --clean
+
+# Project information
+site_name: Prysmian Noodle
+site_url: https://moxoff.com
+site_description: docs website for Prysmian Noodle
+site_author: Moxoff
+copyright: Made with ♥ by Moxoff S.p.a
+
+# Repository
+repo_url: https://gitlab.com/moxoff/prysmian/predictive-quality/noodle-core
+repo_name: prysmian/predictive-quality/noodle-core
+edit_uri: "" #disables edit button
+
+# Markdown extensions
+markdown_extensions:
+  - footnotes
+  - attr_list
+  - def_list
+  - meta
+  - admonition
+  - codehilite
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+      clickable_checkbox: true
+  - pymdownx.keys
+  - pymdownx.highlight
+  - pymdownx.snippets
+  - pymdownx.tabbed
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.arithmatex:
+      generic: true
+
+#to use latex equations
+#https://squidfunk.github.io/mkdocs-material/reference/mathjax/
+extra_javascript:
+  - javascripts/config.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+# Configuration
+theme:
+  name: material
+  features:
+    # - navigation.tabs
+    # - navigation.tabs.sticky
+    - navigation.top
+    - navigation.tracking
+    # - navigation.instant
+    - toc.integrate
+    - search.suggest
+    - search.highlight
+    - header.autohide
+  logo: static/images/logo.png
+  favicon: static/images/favicon.ico
+  palette:
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep-purple
+      accent: indigo
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep-purple
+      accent: blue
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+
+#Plugins
+plugins:
+  - search
+  - simple:
+      include_folders:
+        - "*"
+      ignore_folders: []
+      ignore_hidden: true
+      merge_docs_dir: true
+  - autorefs
+  - mkdocs-jupyter:
+      kernel_name: python3
+      include_source: True
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          rendering:
+            show_source: true
+            # show_root_heading: yes
+            heading_level: 2
+          selection:
+            filters:
+              - "!^_" # exclude all members starting with _
+              - "!^__init__$" # exclude __init__ modules and methods
+      custom_templates: templates
+      watch:
+        - common
+        - component_creator
+        - cron
+        - db_scripts
+        - importer
+        - kpi
+        - settings
+
+# Page tree
+nav:
+  - Home:
+      - Noodle: index.md
+  - List of functions:
+      - Test functions: functions/workflows.md
+  # - Reference:
+  #     - CLI: main.md
+  #     - Configuration: config.md
+  #     - Data: data.md
+  #     - Models: models.md
+  #     - Training: train.md
+  #     - Inference: predict.md
+  #     - Utilities: utils.md
+  # - API: api.md
+
+#Extra material theme settings
+extra:
+  disqus: Moxoff
+  generator: false
+  social:
+    - icon: fontawesome/solid/paper-plane
+      link: mailto:<email-address>
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/squidfunk
+      name: squidfunk on Twitter

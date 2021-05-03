@@ -1,0 +1,5 @@
+
+default_context:
+  project_name: 'streamlit_test'
+  project_slug: 'streamlit_test'
+  _template: ./

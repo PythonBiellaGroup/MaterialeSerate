@@ -1,0 +1,44 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: Current File",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "PYTHONPATH": "${cwd}"
+      }
+    },
+    {
+      "name": "Python: Streamlit",
+      "type": "python",
+      "request": "launch",
+      "module": "streamlit.cli",
+      "args": ["run", "${workspaceFolder}/main.py"],
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "PYTHONPATH": "${cwd}"
+      }
+    },
+    {
+      "name": "Flask Backend",
+      "type": "python",
+      "request": "launch",
+      "port": 8000,
+      "host": "localhost",
+      "program": "${workspaceFolder}/server.py",
+      "console": "integratedTerminal",
+      "env": {
+        "API_ENDPOINT_PORT": "8000",
+        "VERBOSITY": "debug"
+        // "PYTHONPATH": "${cwd}"
+      }
+    }
+  ]
+}

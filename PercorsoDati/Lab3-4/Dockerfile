@@ -5,7 +5,7 @@ LABEL name="Streamlit Dashboard"
 LABEL maintainer="PythoBiellaGroup"
 LABEL version="1.0"
 
-ARG YOUR_ENV=".venv"
+ARG YOUR_ENV="virtualenv"
 
 ENV YOUR_ENV=${YOUR_ENV} \
     PYTHONFAULTHANDLER=1 \

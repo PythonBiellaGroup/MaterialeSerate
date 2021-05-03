@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  dashboard:
+    image: streamlit:latest
+    build:
+      dockerfile: ./Dockerfile
+      context: ./
+    restart: always
+    environment:
+      EMAIL: "pythonbiellagroup@gmail.com"
+    ports:
+      - "8501:8501"
+    volumes:
+      - ~/Docker-temp/streamlit:/server/data
+
+volumes:
+  dashboard-data:

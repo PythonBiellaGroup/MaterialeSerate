@@ -5,3 +5,7 @@ Visual Novel Engine
 https://renpy.org/
 
 https://github.com/richardbenson91477/pygames
+
+https://github.com/formazione/arkapygame
+
+https://github.com/formazione/pygame_particles

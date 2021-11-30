@@ -1,0 +1,36 @@
+[tool.poetry]
+name = "nlp-for-querying-data"
+version = "0.1.0"
+description = "Semplice script da usare com Bot per estrarre dati da un file"
+authors = ["nick87ds"]
+
+[tool.poetry.dependencies]
+python = "^3.8, < 3.10"
+numpy = "^1.21.4"
+pandas = "^1.3.4"
+sklearn = "^0.0"
+sklearn-crfsuite = "^0.3.6"
+spacy = "^3.2.0"
+dateparser = "^1.1.0"
+openpyxl = "^3.0.9"
+python-telegram-bot = "^13.8.1"
+
+[tool.poetry.dev-dependencies]
+flake8 = "^3.9.2"
+flake8-isort = "ˆ4.0.0"
+flake8-builtins = "ˆ1.5.3"
+autopep8 = "ˆ1.5.7"
+pylint = "ˆ2.8.2"
+bandit = "ˆ1.7.0"
+black = "ˆ21.5b0"
+mypy = "ˆ0.812"
+flake8-bandit = "ˆ2.1.2"
+flake8-mypy = "ˆ17.8.0"
+sqlalchemy-stubs = "^0.3"
+pytest-cov = "^2.8.1"
+autoflake = "^1.3.1"
+jupyter = "^1.0.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

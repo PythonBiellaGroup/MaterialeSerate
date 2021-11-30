@@ -1,0 +1,7 @@
+.venv
+app/.ipynb_checkpoints
+notebook/.ipynb_checkpoints
+classifier.pickle
+crf_model.pickle
+label_encoder.pickle
+vocabulary.pickle

@@ -1,0 +1,37 @@
+version: "3.8"
+services:
+  app:
+    #image: endpoint where your image is : develop
+    build:
+      dockerfile: ./Dockerfiles/app.dockerfile
+      context: .
+    container_name: app-core
+    env_file:
+      - .env
+    restart: always
+    environment:
+      EMAIL: "andrea.guzzo92@gmail.com"
+      DEBUG_MODE: ${APP_DEBUG_MODE}
+      VERBOSITY: ${APP_VERBOSITY}
+    depends_on:
+      - db
+    ports:
+      - "${APP_DOCKER_PORT:-8045}:${APP_ENDPOINT_PORT:-8000}"
+  
+  db:
+    build: 
+      dockerfile: ./Dockerfiles/db.dockerfile
+      context: .
+    env_file:
+      - .env
+    container_name: app-db
+    #image: postgres:13.2
+    environment:
+      POSTGRES_DB: ${APP_DB_NAME}
+      POSTGRES_USER: ${APP_DB_USER}
+      POSTGRES_PASSWORD: ${APP_DB_PASSWORD}
+    ports:
+      - ${EXTERNAL_DB_PORT:-5492}:5432
+    volumes:
+      - ${POSTGRES_DATA_DIR:-/opt/admin-app/data/postgres}:/var/lib/postgresql/data
+      - ${POSTGRES_BACKUP_DIR:-/opt/admin-app/backup}:/project/backup

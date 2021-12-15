@@ -9,7 +9,6 @@
 ########################
 
 #We don't want to push the data
-*.csv
 *.xlsx
 *.xls
 

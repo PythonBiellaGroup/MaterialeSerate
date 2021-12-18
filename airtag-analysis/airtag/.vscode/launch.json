@@ -21,7 +21,7 @@
       "type": "python",
       "request": "launch",
       "module": "streamlit.cli",
-      "args": ["run", "${workspaceFolder}/main.py"],
+      "args": ["run", "${workspaceFolder}/app/main.py"],
       "cwd": "${workspaceFolder}",
       "env": {
           "PYTHONPATH": "${cwd}"
@@ -33,7 +33,7 @@
       "request": "launch",
       "port": 8000,
       "host": "localhost",
-      "program": "${workspaceFolder}/core/app.py",
+      "program": "${workspaceFolder}/app/app.py",
       "console": "integratedTerminal",
       "env": {
           "API_ENDPOINT_PORT": "5000",

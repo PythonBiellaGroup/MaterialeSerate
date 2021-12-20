@@ -1,5 +1,11 @@
 import streamlit as st
 
+from app.src.common.sentiment import (
+    azure_sentiment,
+    text_blob_sentiment,
+    vader_sentiment,
+)
+
 
 def app():
     st.title("PBG Airtag analysis")
@@ -26,3 +32,23 @@ def app():
             
         """
     )
+    with st.expander(label="Expand me", expanded=True):
+        with st.container():
+            st.subheader("Sentiment Analysis Validation")
+            text = st.text_area(
+                "Insert text you want to score",
+                value="Airtags are extremely useful and I love the design",
+                key="textarea_azure",
+            )
+            col1, col2, col3 = st.columns(3)
+            if col1.button("Launch Azure Analysis", key="button_azure"):
+                score, sentiment = azure_sentiment([text])
+                st.write(f"Sentiment: {sentiment} with score: {score}")
+
+            if col2.button("Launch Vader Analysis", key="button_vader"):
+                score = vader_sentiment([text])
+                st.write(f"Sentiment score: {score}")
+
+            if col3.button("Launch Text Blob Analysis", key="button_textblob"):
+                score, sentiment = text_blob_sentiment([text])
+                st.write(f"Sentiment: {sentiment} with score: {score}")

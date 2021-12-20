@@ -1,4 +1,5 @@
 import streamlit as st
+from app.src.common.download import convert_df
 from app.src.common.plots import frequency_plot, wordcloud
 from app.src.common.transformations import most_frequent_words
 from app.src.common.importer import read_dataframe
@@ -7,12 +8,19 @@ from app.src.common.importer import read_dataframe
 def app():
     st.title("PBG Airtag analysis")
     st.subheader("Text Analysis Page")
+
     df = read_dataframe()
-    print(df.columns)
-    print(df.shape)
+
+    csv = convert_df(df)
+
+    st.download_button(
+        label="Download data as CSV",
+        data=csv,
+        file_name="text_df.csv",
+        mime="text/csv",
+    )
+
     mfwords, word_list = most_frequent_words(df)
-    print(mfwords.head())
-    print(mfwords.shape)
 
     st.dataframe(mfwords)
 

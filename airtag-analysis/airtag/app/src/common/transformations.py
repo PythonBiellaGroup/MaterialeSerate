@@ -1,3 +1,4 @@
+import ast
 import pandas as pd
 from nltk.probability import FreqDist
 
@@ -5,7 +6,7 @@ from nltk.probability import FreqDist
 def most_frequent_words(df: pd.DataFrame):
     words_list = []
     for _, tr in df.iterrows():
-        for x in list(tr["tweet_preprocessed"]):
+        for x in ast.literal_eval(tr["tweet_preprocessed"]):
             words_list.append(x)
 
     fdist = FreqDist(words_list)

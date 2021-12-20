@@ -1,7 +1,11 @@
 import os
 
-from app.src.common.utils import read_yaml
-from app.src.logger import logger
+import tweepy
+from dotenv import load_dotenv
+from tweepy import OAuthHandler
+
+# from app.src.common.utils import read_yaml
+# from app.src.common.logger import logger
 
 
 # Set the application variables
@@ -13,8 +17,25 @@ VERBOSITY: str = os.environ.get("VERBOSITY", "DEBUG")
 # Application Path
 APP_PATH: str = os.environ.get("PROJECT_WORKSPACE", os.path.abspath("."))
 CONFIG_PATH: str = os.path.join(APP_PATH, "app", "config")
-DATA_PATH: str = os.path.join(APP_PATH, "app", "data")
+STATIC_PATH: str = os.path.join(APP_PATH, "app", "static")
+DATA_PATH: str = os.path.join(APP_PATH, "data")
 
+# Read the dotenv file
+DOTENV_PATH = os.path.join(APP_PATH, "vars.env")
+load_dotenv(DOTENV_PATH)
+
+# twitter API credentials
+CONSUMER_KEY = os.getenv("CONSUMER_KEY")
+CONSUMER_SECRET = os.getenv("CONSUMER_SECRET")
+ACCESS_TOKEN = os.getenv("ACCESS_TOKEN")
+ACCESS_SECRET = os.getenv("ACCESS_SECRET")
+AUTH = OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+AUTH.set_access_token(ACCESS_TOKEN, ACCESS_SECRET)
+API = tweepy.API(AUTH)
+
+# azure cognitive services credentials
+AZURE_KEY = os.getenv("CG_KEY")
+AZURE_ENDPOINT = os.getenv("CG_ENDPOINT")
 
 # Database settings
 DB_CONFIG: dict = {
@@ -26,9 +47,10 @@ DB_CONFIG: dict = {
 }
 
 # Read the configurations
-APP_CONFIG: dict = read_yaml(CONFIG_PATH, filename="settings.yml")
+# APP_CONFIG: dict = read_yaml(CONFIG_PATH, filename="settings.yml")
 
 # logging
-logger.debug(f"App path: {APP_PATH}")
-logger.debug(f"Config path: {CONFIG_PATH}")
-logger.debug(f"Data Path: {DATA_PATH}")
+# logger.debug(f"App path: {APP_PATH}")
+# logger.debug(f"Config path: {CONFIG_PATH}")
+# logger.debug(f"Config path: {STATIC_PATH}")
+# logger.debug(f"Data Path: {DATA_PATH}")

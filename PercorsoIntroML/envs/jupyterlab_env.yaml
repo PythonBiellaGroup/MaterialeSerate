@@ -1,0 +1,17 @@
+name: jupyterlab
+channels:
+  - defaults
+dependencies:
+  - ipykernel=6.4.1
+  - ipython=7.29.0
+  - jupyter_client=7.1.0
+  - jupyter_core=4.9.1
+  - jupyter_server=1.4.1
+  - jupyterlab=3.2.1
+  - jupyterlab_server=2.8.2
+  - nb_conda_kernels=2.3.1
+  - pip=21.2.4
+  - python=3.9.7
+  - setuptools=58.0.4
+  - wheel=0.37.0
+prefix: envs/jupyterlab

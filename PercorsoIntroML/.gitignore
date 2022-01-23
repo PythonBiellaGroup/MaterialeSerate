@@ -153,3 +153,5 @@ cython_debug/
 
 # vscode
 .vscode
+
+iframe_figures

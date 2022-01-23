@@ -41,6 +41,8 @@ jupyter lab
 
 
 ## Task non supervisionato: Clustering
+- [Dimensionality Reduction](./notebooks/03-dimensionality-reduction.ipynb)
+- [Clustering](./notebooks/03-kmeans-clustering.ipynb)
 
 
 

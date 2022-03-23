@@ -1,0 +1,3 @@
+_target_: hydraconfig.src.dataloaders.cifar.CIFARLoader
+file_path: ${data_dir}
+train_val_test_split: [70,10,20]

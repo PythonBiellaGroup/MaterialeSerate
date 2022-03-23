@@ -1,0 +1,3 @@
+_target_: hydraconfig.src.models.cnn.CNNModel
+conv_size: 5
+num_layers: 2

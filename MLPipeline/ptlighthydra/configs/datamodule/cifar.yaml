@@ -1,0 +1,4 @@
+_target_: ptlighthydra.src.datamodule.cifar.CIFAR10DataModule
+data_dir: ${data_dir} # data_dir is specified in config.yaml
+batch_size: 64
+train_val_split:  [45000, 5000]

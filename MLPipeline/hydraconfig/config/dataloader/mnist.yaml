@@ -1,0 +1,2 @@
+_target_: hydraconfig.src.dataloaders.mnist.MNISTLoader
+file_path: ${data_dir}

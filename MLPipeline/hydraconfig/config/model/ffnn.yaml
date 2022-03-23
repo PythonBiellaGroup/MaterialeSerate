@@ -1,0 +1,4 @@
+_target_: hydraconfig.src.models.ffnn.FFNNModel
+num_layers: 2
+hidden_size: 256
+out_size: 2

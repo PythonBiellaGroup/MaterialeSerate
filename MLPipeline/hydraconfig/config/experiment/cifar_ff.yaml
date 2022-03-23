@@ -1,0 +1,20 @@
+# @package _global_
+
+# to execute this experiment run:
+# python train.py experiment=cifar_ff
+
+defaults:
+  - override /dataloader: cifar.yaml
+  - override /model: ffnn.yaml
+
+
+# all parameters below will be merged with parameters from default configurations set above
+# this allows you to overwrite only specified parameters
+
+# name of the run determines folder name in logs
+name: "CIFAR10-FFNN"
+
+dataloader:
+  train_val_test_split: [50,10,40]
+
+

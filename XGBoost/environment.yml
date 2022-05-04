@@ -1,0 +1,9 @@
+name: xgboost_evening
+channels:
+  - conda-forge
+dependencies:
+  - jupyterlab
+  - numpy
+  - pandas
+  - scikit-learn
+  - xgboost

@@ -1,13 +1,13 @@
-name: "mnist-classifier"
-platform: "pytorch_backend"
+name: "mnist_classifier"
+platform: "pytorch_libtorch"
 max_batch_size: 32
 version_policy: { all { }}
 input [
   {
     name: "input"
     data_type: TYPE_FP32
-    format: FORMAT_NHWC
-    dims: [28, 28]
+    format: FORMAT_NCHW
+    dims: [1, 28, 28]
   }
 ]
 output [

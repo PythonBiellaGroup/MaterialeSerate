@@ -1,4 +1,4 @@
-name: pbg-triton-exp
+name: pbg-triton-env
 channels:
   - pytorch
   - conda-forge

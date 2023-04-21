@@ -1,0 +1,1 @@
+/opt/tritonserver/bin/tritonserver --model-repository=/tmp/model_repository --model-control-mode=poll --log-verbose 7

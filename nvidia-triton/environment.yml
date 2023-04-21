@@ -1,0 +1,9 @@
+name: pbg-triton-env
+channels:
+  - pytorch
+  - conda-forge
+dependencies:
+  - python=3.9
+  - jupyterlab=3.6.3
+  - pytorch::pytorch=2.0.0
+  - pytorch::torchvision=0.15.0

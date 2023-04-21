@@ -1,0 +1,26 @@
+name: "mnist_classifier"
+platform: "pytorch_libtorch"
+max_batch_size: 32
+version_policy: { all { }}
+input [
+  {
+    name: "input"
+    data_type: TYPE_FP32
+    format: FORMAT_NCHW
+    dims: [1, 28, 28]
+  }
+]
+output [
+  {
+    name: "output"
+    data_type: TYPE_FP32
+    dims: [10]
+    label_filename: "labels.txt"
+  }
+]
+instance_group [
+  {
+    kind: KIND_AUTO
+    count: 1
+  }
+]

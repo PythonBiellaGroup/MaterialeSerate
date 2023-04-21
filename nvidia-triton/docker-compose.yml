@@ -1,0 +1,9 @@
+services:
+  server:
+    build: server
+    volumes:
+      - "./server/model_repository/:/tmp/model_repository/"
+    ports:
+      - "8000:8000"   # http
+      - "8001:8001"   # grpc
+      - "8002:8002"   # monitoring

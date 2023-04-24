@@ -224,8 +224,23 @@ Voi sapreste rispondere così bene e velocemente a queste risposte? Oppure a mol
 > Puoi scrivere una prova dell'infinità dei numeri primi, con ogni riga in rima? 
 > Puoi disegnare un'illustrazione della prova dell'infinità dei numeri primi in formato SVG?
 
-Inoltre alcune citazioni dal [bellissimo podcast](https://www.youtube.com/watch?v=qbIk7-JPB2c&t=1627s&ab_channel=SebastienBubeck) di Lex Friedman assieme a Sam Altman (CEO di OpenAI)
+Inoltre alcune citazioni dal [bellissimo podcast](https://www.youtube.com/watch?v=L_Guz73e6fw&t=18s&ab_channel=LexFridman) di Lex Friedman assieme a Sam Altman (CEO di OpenAI)
 
+> Specific definition of AGI really matter. 
+
+> I don't think GPT-4 is not conscious...but if you provide good prompt can pretend to be conscious...
+> If you want to be sure that it's not conscious you have to train with a corpus that don't have any mention of consciousness
+
+> We are not trying to create the perfect system with no bias, but a "good enough" system 
+
+> We train this models with a lot of data and they learn something "underline" this data that is there, and they can do amazing things...There is knowledge in there, but as it is it's not really usable, so we need human feedbacks, show two outputs ask which one it's better than the other and feed back to the model with reinforcement learning. And this is working remarkably well with few data. RHLF it's how we aligned the model to the humans want to do. (having a little bit of human guidance on top of that).
+
+> "The science of the human guidance"
+
+> Is not a super intelligence because it's not able to discover and interpret the world, discovering new fundamental science.
+
+> GPT-4 is like the mainframe in the 70's, it's only the beginning of the journey
+ 
 E una bellissima [Conceptual Analysis](https://www.frontiersin.org/articles/10.3389/frai.2021.622364/full) molto interessante come lettura di approfondimento
 
 Ok abbiamo visto una breve introduzione e cercato di capire se questi modelli sono o non sono intelligenti, ma nel mondo adesso cosa sta succedendo?

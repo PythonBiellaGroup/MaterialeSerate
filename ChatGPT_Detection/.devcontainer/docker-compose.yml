@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  admin_app_dev:
+    build:
+      dockerfile: ./Dockerfiles/dev.dockerfile
+      context: ../
+    restart: always
+    environment:
+      EMAIL: "andrea.guzzo92@gmail.com"
+      DEBUG_MODE: "False"
+      VERBOSITY: "info"
+    volumes:
+      - ..:/workspace:cached
+    command: /bin/sh -c "while sleep 1000; do :; done"

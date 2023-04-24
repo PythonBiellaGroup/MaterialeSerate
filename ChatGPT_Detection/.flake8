@@ -1,0 +1,14 @@
+[flake8]
+max-line-length = 120
+exclude = .venv, docs, .vscode, pychache, .git,__pycache__,__init__.py,.mypy_cache,.pytest_cache, alembic
+ignore = E501, W503, E226, E203, W503, W293, I004, E266, W391, W292, I001, S101, I003, I005, A002, A003, S608, W605, S303, B303
+# E501: Line too long
+# W503: Line break occurred before binary operator
+# E226: Missing white space around arithmetic operator
+# I001: Import wrong positions
+
+[mypy]
+plugins = pydantic.mypy, sqlmypy
+ignore_missing_imports = True
+disallow_untyped_defs = True
+exclude = ['volumes/*']

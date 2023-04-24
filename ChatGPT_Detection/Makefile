@@ -9,6 +9,9 @@ install_pre_commit: ## configure and install pre commit tool
 uninstall_pre_commit: ## configure and install pre commit tool
 	@poetry run pre-commit uninstall
 
+secrets:  ## Create secrets baseline
+	gitleaks detect --redact --report-path "$@" || true
+
 .PHONY: install
 install: ## Install the poetry and python environment
 	@echo "🚀 Creating virtual environment using pyenv and poetry"

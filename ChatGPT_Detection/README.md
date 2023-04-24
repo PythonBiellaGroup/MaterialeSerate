@@ -87,10 +87,12 @@ ChatGPT, LLMs e Foundation models: [un'occhiata più da vicino](https://www.ales
 > In poche parole, un modello linguistico di grandi dimensioni (LLMs) è un modello linguistico addestrato su enormi quantità di dati (spesso, ad esempio, testi provenienti da Internet), con molti (miliardi) parametri del modello e praticamente sempre utilizzando un'architettura basata su [Transformer](https://towardsdatascience.com/transformers-89034557de14) (con steroidi)
 
 Ecco alcuni link molto utili per capire come funzionano questi tipi di modelli:
+- [Collection of good papers with summary](https://projects.laion.ai/Open-Assistant/docs/research/general)
 - [Understanding large language models](https://magazine.sebastianraschka.com/p/understanding-large-language-models)
 - [Finetuning large language models](https://magazine.sebastianraschka.com/p/finetuning-large-language-models)
 - [Transfomers models: introduzione e catalogo con spiegazione, edizione 2023](https://amatriain.net/blog/transformer-models-an-introduction-and-catalog-2d1e9039f376/)
 - [Spiegazione matematica di come funzionano i Transformers Models](https://lilianweng.github.io/posts/2023-01-27-the-transformer-family-v2/)
+- [MIT Future of AI Self-supervised learning and foundation models](https://www.futureofai.mit.edu/)
 
 
 ### Quindi Chat GPT?

@@ -1,6 +1,4 @@
 import os
-import logging
-import logging.handlers
 from functools import lru_cache
 from pathlib import Path
 from typing import Any, Dict
@@ -28,7 +26,7 @@ class Settings(BaseSettings):
 
     # EXTRA VALUES not mapped in the config but that can be existing in .env or env variables in the system
     extra: Dict[str, Any] = None
-    
+
     # Open AI
     OPENAI_ORGANIZATION: str = ""
     OPENAI_API_KEY: str = ""

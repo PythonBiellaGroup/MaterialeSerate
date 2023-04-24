@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500">
+  <style>
+    .number { font-family: Arial, sans-serif; font-size: 20px; }
+    .prime { fill: red; }
+  </style>
+  <rect width="100%" height="100%" fill="white"/>
+  <g transform="translate(50, 50)">
+    <!-- Creazione griglia -->
+    <g stroke="black" stroke-width="1">
+      <path d="M0 0 H400"/>
+      <path d="M0 0 V400"/>
+      <path d="M0 400 H400"/>
+      <path d="M400 0 V400"/>
+      <path d="M0 0 L400 400"/>
+      <path d="M0 400 L400 0"/>
+    </g>
+    <!-- Inserimento numeri primi -->
+    <text x="0" y="20" class="number prime">2</text>
+    <text x="40" y="20" class="number prime">3</text>
+    <text x="80" y="20" class="number prime">5</text>
+    <!-- Aggiungi altri numeri primi qui -->
+  </g>
+</svg>

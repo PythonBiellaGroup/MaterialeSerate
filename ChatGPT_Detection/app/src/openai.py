@@ -49,8 +49,7 @@ def launch_request(
     ) as progress:
         progress.add_task(description="Sto generando la risposta...", total=None)
         completion = openai.ChatCompletion.create(
-            model=model, messages=messages, max_tokens=input_max_tokens, temperature=input_temperature
-        )
+            model=model, messages=messages, max_tokens=input_max_tokens, temperature=input_temperature)
     message = completion.choices[0].message.content
     
     # logger.debug(message)

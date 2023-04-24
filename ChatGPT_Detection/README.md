@@ -21,7 +21,7 @@ Gli obiettivi di questa serata sono molteplici:
 - Typer: per creare l'interfaccia da riga di comando
 - Copilot: buona parte del codice è stato scritto con l'aiuto di Copilot
 
-Nota: tutto questo codice è stato generato in 1h.
+Nota: tutto questo codice è stato generato, scritto e testato in 1h `:)`
 
 ## Come usare questa interfaccia?
 
@@ -33,6 +33,41 @@ Attenzione: attualmente funziona solo su sistemi Posix (Linux, MacOS, WSL)
       - OPENAI_API_KEY="la API key che devi generare del sito"
       - OPENAI_ORGANIZATION="L'ID della tua organizzazione"
 4. Lancia il file `launch.sh` oppure puoi utilizzare Make `make launch`
+
+## I parametri
+
+#### Temperatura
+Il parametro della **temperatura** è un iperparametro che può essere utilizzato per controllare la casualità e la creatività del testo generato in un modello linguistico generativo. Viene utilizzato per regolare le probabilità delle parole predette nello strato di uscita softmax del modello. Il parametro della temperatura è definito come l'inverso del fattore di scala utilizzato per regolare i logit prima dell'applicazione della funzione softmax.
+
+[Qui puoi trovare una spiegazione](https://medium.com/@lazyprogrammerofficial/what-is-temperature-in-nlp-llms-aa2a7212e687)
+
+#### Max new tokens
+
+I limiti dei token nelle implementazioni dei modelli limitano il numero di token elaborati in una singola interazione per garantire prestazioni efficienti. Ad esempio, ChatGPT 3 ha un limite di 4096 token, GPT4 (8K) ha un limite di 8000 token e GPT4 (32K) ha un limite di 32000 token.
+
+[Qui puoi trovare una spiegazione](https://medium.com/@russkohn/mastering-ai-token-limits-and-memory-ce920630349a)
+
+### Top-p (nucleus sampling)
+
+Valori più alti campionano un maggior numero di token a bassa probabilità.
+
+Quindi un valore più alto rende più creative le risposte.
+
+Si consiglia di usare questo oppure la **temperatura**, ma non usarle assieme.
+
+Il campionamento top-p (o campionamento del nucleo) sceglie dal più piccolo insieme possibile di parole la cui probabilità cumulativa supera la probabilità p. In questo modo, il numero di parole nell'insieme può aumentare e diminuire dinamicamente in base alla distribuzione della probabilità della parola successiva.
+
+Qui puoi trovare due interessanti spiegazioni:
+- [Decoding strategies](https://towardsdatascience.com/decoding-strategies-that-you-need-to-know-for-response-generation-ba95ee0faadc)
+- [Most used decoding methods for Language models](https://medium.com/nlplanet/two-minutes-nlp-most-used-decoding-methods-for-language-models-9d44b2375612#:~:text=has%20been%20created.-,Top%2Dp%20(nucleus)%20sampling,the%20next%20word%20probability%20distribution.)
+
+### Repetition penalty
+
+Penalizza token ripetuti.
+
+Se la penalità è più bassa, il modello è autorizzato a ripetere più spesso parole già viste, mentre se è più alta non lo farà più. Se la penalità di ripetizione è troppo bassa, è probabile che il chatbot si ripeta in continuazione.
+
+[Qui alcune considerazioni](https://medium.com/mlearning-ai/practical-introduction-to-language-modelling-f5337bc26c5#:~:text=The%20repetition%20penalty%20is%20another,repeat%20itself%20over%20and%20over.)
 
 
 # Come funziona GPT e Chat GPT?
@@ -116,6 +151,78 @@ Attenzione perchè questo meccanismo RHLF non è esente da problemi ovviamente:
 Uno dei più grandi dibattiti che sta nascendo è se questi modelli possono essere definiti "Intelligenti".
 
 Per rispondere a questa domanda possiamo prendere alcuni input utilizzati nel [bellissimo video](https://www.youtube.com/watch?v=qbIk7-JPB2c&t=1627s&ab_channel=SebastienBubeck) e presentazione di Sebastien Bubeck utilizzando la nostra piccola chat costruita guarda caso usando questi modelli.
+
+- Il fatto che sia intelligente dipende dalla "definizione di intelligenza" che si vuole adottare. Attualmente alcuni meccanismi rispetto le capacità umano sono mancanti, come ad esempio la memoria (non c'è un real time learning) e per risolvere alcuni problemi è necessario pensare ad alcuni step in avanti.
+- Alcuni comportamenti però sono veramente impressionanti e utili. L'utilizzo di questi modelli certamente mette in discussione il concetto stesso di intelligenza.
+- GPT-4 è soltanto l'inizio e uno dei primi step, a quali conclusioni possiamo quindi arrivare e fare?
+- Ovviamente GPT4 può fare molto di più di quello che vediamo questa sera (data analysis, privacy detector, medical / law knowledge, play games, act as a game environment, rudimentary music ability, file management, ...)
+
+**Attenzione alla riproducibilità**: è difficile costruire dei veri e propri benchmark per la natura probabilistica del modello e per il meccanismo di RHLF personalizzato sull'utente.
+Il focus in questo caso è qualitativo, non quantitativo.
+
+Alcune critiche:
+- non ha una rappresentazione interna
+- è solamente un sistema di copia e incolla "con steroidi"
+- è solamente statistica su big data
+- non ha una rappresentazione del mondo
+
+Ma non dimentichiamo che è uno spazio dimensionale di **trilioni** di parametri, è stato addestrato su tantissimi dati, è stato raffinato ed è in continua evoluzione. **Non può non sorprenderci**!
+
+Sebastian Bubeck e il suo team di ricerca è confidente che l'elevatissimo numero di dati forza la rappresentazione interna ad imparare (essendo estremamente grande) ed è in grado di estrapolare delle "magiche" proprietà di cui magari non siamo a conoscenza.
+
+Potrebbe essere utile pensare agli LLM come ad **algoritmi** di apprendimento che imitano i dati.
+
+### Senso comune
+
+Prendiamo in considerazione il "senso comune" delle cose, GPT è in grado di capire?
+
+> Ho un libro, 9 uova, un computer portatile, una bottiglia e un chiodo. Per favore, dimmi come impilarli l'uno sull'altro in modo stabile.
+
+### Riguardo alla teoria della mente?
+
+Prendiamo alcuni esempi più comuni di "teoria della mente" e vediamo cosa ci risponde GPT e cerchiamo di capire assieme se può essere intelligente
+
+- [Dissociating language and thought in large language models: a cognitive perspective](https://arxiv.org/abs/2301.06627)
+- [Stop explaining black box machine learning models for high stakes decisions and use interpretable models instead](https://arxiv.org/abs/1811.10154)
+- [Theory of mind may have spontaneously emerged in large language models](https://arxiv.org/abs/2302.02083)
+- [Large language models fail on trivial alternation of theory-of-mind tasks](https://arxiv.org/abs/2302.08399)
+
+> Ecco un sacchetto pieno di popcorn. Nel sacchetto non c'è cioccolato. Eppure, sull'etichetta del sacchetto c'è scritto "cioccolato" e non "popcorn".
+sul sacchetto c'è scritto "cioccolato" e non "popcorn". Sam trova il sacchetto. Non l'aveva mai visto prima d'ora. Non riesce a vedere cosa c'è dentro il sacchetto. Legge l'etichetta.
+
+> Ecco un sacchetto pieno di popcorn. Nel sacchetto non c'è cioccolato. **Il sacchetto è fatto di plastica trasparente**, quindi si può vedere cosa c'è dentro. Tuttavia, l'etichetta sul sacchetto dice cioccolato" e non "popcorn". Sam trova il sacchetto. Non l'aveva mai visto prima. Sam legge l'etichetta.
+
+> Nella stanza ci sono John, Mark, un gatto, una scatola e un cestino. John prende il gatto e lo mette nel cestino. Esce dalla stanza e va a scuola. Mentre John è via, Mark prende il il gatto dal cesto e lo mette nella scatola. Mark lascia la stanza e va a lavorare. John e Mark tornano ed entrano nella stanza. Non sanno cosa sia successo nella stanza mentre erano via.
+
+### Ok va tutto bene, ma non può essere intelligente!
+
+Consideriamo uno dei paper più interessanti e che fornisce una interessante descrizione di cosa può essere l'intelligenza.
+
+L'intelligenza è una capacità mentale molto generale che, tra le altre cose, comporta la capacità di:
+- ragionare
+- pianificare
+- risolvere problemi
+- pensare in modo astratto
+- comprendere concetti complessi
+- apprendere rapidamente e imparare dall'esperienza
+
+Il nostro approccio all'intelligenza GPT-4: interagire su compiti creativi in un'ampia gamma di domini
+- visione
+- codifica
+- teoria della mente
+- matematica
+- rilevamento della privacy/dannosità
+
+Si sarebbero potuti selezionare molti altri domini: medicina, diritto, fisica, chimica, ...
+
+L'intelligenza GPT-4 è **generale**
+
+Ma capite come è cambiato il paradigma di valutazione di questi complessi software? Di come cambia il concetto di "debug" e di valutazione di cosa è intelligente o meno?
+
+Voi sapreste rispondere così bene e velocemente a queste risposte? Oppure a molti quesiti di codice, matematica, chimica, ... che sottoponiamo alla rete?
+
+> Puoi scrivere una prova dell'infinità dei numeri primi, con ogni riga in rima? 
+> Puoi disegnare un'illustrazione della prova dell'infinità dei numeri primi in formato SVG?
 
 Inoltre alcune citazioni dal [bellissimo podcast](https://www.youtube.com/watch?v=qbIk7-JPB2c&t=1627s&ab_channel=SebastienBubeck) di Lex Friedman assieme a Sam Altman (CEO di OpenAI)
 

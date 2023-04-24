@@ -1,6 +1,6 @@
 ARG python_base_version="0-4-0"
 
-FROM gitlab-registry.mdpi.com:8081/ai/libraries/dockbase/python-base:${python_base_version} as python-base
+FROM python3.9
 
 # Metadata
 LABEL name="dev_container"

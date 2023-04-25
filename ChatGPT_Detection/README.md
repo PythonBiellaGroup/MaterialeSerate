@@ -140,6 +140,11 @@ Per addestrare un modello ChatGPT, ci sono due fasi principali:
 
 ### RLHF Network mechanism
 
+RHLF = Reinforcement Learning from Human Feedback, è una combinazione di:
+- Supervised Fine-tuning (SFT)
+- Reward / preference modeling (RM)
+- Reinforcement Learning from Human Feedback (RLHF)
+
 Questo meccanismo è l'aspetto fondamentale di ChatGPT che consente ad OpenAI di controllare il modello (GPT) e adattarlo agli input umani utilizzando solamente pochissimi Input da parte degli utenti o da parte di un gruppo di controllo.
 
 Per capire come funziona questo meccanismo ecco un ottimo [blog post](https://huggingface.co/blog/stackllama)

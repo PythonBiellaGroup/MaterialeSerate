@@ -1,4 +1,4 @@
-# Chat GPT Detection night
+# GPT Detection
 
 Materiale e documentazione riguardo alla serata su ChatGPT ad opera di PythonBiellaGroup.
 

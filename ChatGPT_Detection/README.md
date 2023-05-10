@@ -3,8 +3,8 @@
 Materiale e documentazione riguardo alla serata su ChatGPT ad opera di PythonBiellaGroup.
 
 Serata a cura di:
-- Andrea Guzzo
-- Luca Gilli
+- Andrea Guzzo (MDPI)
+- Luca Gilli (Clearbox.ai)
 
 In questa serata esploreremo il mondo dell'intelligenza artificiale generativa associata al mondo del Natural Language Processing.
 
@@ -13,6 +13,14 @@ Gli obiettivi di questa serata sono molteplici:
 - Una piccola demo in python di come si possono usare le API di OpenAI e i tools moderni come copilot, GPT4 ecc..
 - Fare una piccola overview di quelli che sono i problemi e le sfide che si presentano con questo tipo di tecnologie
 - Capire come si può fare detection di testo generato e perché è importante
+
+## Materiale della serata
+
+In questa repository potete trovare:
+- Codice utilizzato per la demo su GPT4
+- Questo readme con tutta la descrizione, link, materiale utile
+- Slide di Luca Gilli [qui il link](https://github.com/PythonBiellaGroup/MaterialeSerate/blob/master/ChatGPT_Detection/come_rilevare_testo_generato_da_LLMs.pdf)
+- Notebooks creati e mostrati durante la serata da Luca Gilli e Clearbox.ai [link ai notebook](https://github.com/PythonBiellaGroup/MaterialeSerate/tree/master/ChatGPT_Detection/notebooks)
 
 ## Tecnologie utilizzate
 

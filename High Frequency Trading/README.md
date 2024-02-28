@@ -9,3 +9,5 @@ https://www.youtube.com/watch?v=x-ri6MJ2iCY
 Parte 2:
 
 https://www.youtube.com/watch?v=hzfIZ7IpYqM
+
+Repo di Daniele: https://github.com/DanieleRaimondi/bitcoin_datascience

@@ -1,0 +1,62 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+[tool.hatch.build.targets.wheel]
+packages = ["src/sp_rag"]
+
+[project]
+name = "sp_rag"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11, <3.13"
+dependencies = [
+    "arxiv<3.0.0,>=2.1.3",
+    "loguru>=0.7.3,<1.0.0",
+    "zenml[server]<1.0.0,>=0.74.0",
+    "pandas>=2.2.3,<3.0.0",
+    "poethepoet<1.0.0,>=0.32.2",
+    "qdrant-client<2.0.0,>=1.13.2",
+    "langchain<1.0.0,>=0.3.19",
+    "langchain-openai<1.0.0,>=0.3.6",
+    "langchain-community<1.0.0,>=0.3.18",
+    "sentence-transformers>=3.4.1,<4.0.0",
+    "pyarrow<20.0.0,>=19.0.01",
+    "fastembed>=0.5.1,<1.0.0",
+    "unstructured[all-docs]<1.0.0,>=0.16.23",
+    "langchain-unstructured<1.0.0,>=0.1.0",
+    "langchain-huggingface>=0.1.2",
+    "langchain-qdrant>=0.2.0",
+    "streamlit>=1.42.2",
+    "lark>=1.2.2",
+    "langgraph>=0.3.10",
+    "upsetplot>=0.9.0",
+    "ipywidgets>=8.1.5",
+    "numpy>=1.26.4",
+    "plotly>=6.0.1",
+    "langchain-ollama>=0.2.1",
+    "python-dotenv>=1.0.1",
+    "accelerate>=1.6.0",
+]
+
+[dependency-groups]
+
+dev = [
+    "black>=25.1.0",
+    "isort>=6.0.1",
+    "notebook>=7.3.3",
+    "pytest>=8.3.5",
+    "pytest-cov>=6.0.0",
+    "pytest-mock>=3.14.0",
+    "ruff>=0.11.2",
+]
+
+[tool.poe.tasks]
+
+zenml = "zenml login --local"
+qdrant = "docker compose up -d qdrant"
+start = { sequence = ["zenml", "qdrant"] }
+download-arxiv = "uv run python -m tools.run --no_cache --download_arxiv"
+load-to-qdrant = "uv run python -m tools.run --load_to_qdrant"
+end-to-end = "uv run python -m tools.run --download_arxiv --load_to_qdrant"
+webapp = "uv run python -m tools.run --webapp"

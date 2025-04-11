@@ -1,0 +1,4 @@
+parameters:
+    files_path: "./data/arxiv"
+    qdrant_url: "http://localhost:6333"
+    qdrant_collection: "arxiv_papers"

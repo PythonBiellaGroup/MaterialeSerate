@@ -1,0 +1,9 @@
+parameters:
+  categories:
+    - cs.AI
+    - cs.CL
+    - cs.CV
+  keyword: "(RAG OR Retrieval-Augmented Generation OR image classification OR computer vision OR semantic segmentation)"
+  date_since: "2024-09-01"
+  save_path: "./data/arxiv/"
+  max_results: 20
